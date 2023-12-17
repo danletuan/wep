@@ -70,7 +70,7 @@
                         color: orangered;
                     }
                 }
-                &.hover{
+                &:hover{
                     opacity: 0.8;
                 }
             }
@@ -79,7 +79,7 @@
                 margin: 0 10px;
                 cursor: pointer;
                 opacity: 0.2;
-                &:active{
+                &.active{
                     opacity: 1;
 
                     span{

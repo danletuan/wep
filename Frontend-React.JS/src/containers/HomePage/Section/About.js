@@ -16,7 +16,7 @@ class About extends Component {
                     <div className='content-left'>
                         <iframe width="100%" height="400px" src="https://www.youtube.com/embed/bk7u2A0ZZxg"
                             title="(Restream) Tuổi thơ &quot;Báo Đời&quot; của Độ Tày và chuyện mua Z1000 tặng sinh nhật vợ."
-                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     </div>
                     <div className='content-right'>
                         <p>(Restream) Tuổi thơ "Báo Đời" của Độ Tày và chuyện mua Z1000 tặng sinh nhật vợ.</p>
