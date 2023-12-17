@@ -203,14 +203,26 @@ let updateUserData = (data) => {
 
 }
 
-let getAllCodeService = () => {
+let getAllCodeService = (typeInput) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let res = {};
-            let allcode = await db.Allcode.findAll()
-            res.errCode = 0
-            res.data = allcode
-            resolve(res)
+
+            if (!typeInput) {
+                resolve({
+                    errCode: 1,
+                    errMessage: 'Missing required parameters!'
+                })
+
+            } else {
+                let res = {};
+                let allcode = await db.Allcode.findAll({
+                    where: { type: typeInput }
+                });
+                res.errCode = 0
+                res.data = allcode
+                resolve(res)
+            }
+
 
         } catch (e) {
             reject(e)
