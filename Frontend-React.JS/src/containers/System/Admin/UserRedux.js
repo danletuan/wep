@@ -209,6 +209,7 @@ class UserRedux extends Component {
                                 <select className='form-control'
 
                                     onChange={(event) => { this.onChangeInput(event, 'gender') }}
+                                    value={gender}
                                 >
                                     {genders && genders.length > 0 && genders.map((item, index) => {
                                         return (
@@ -221,6 +222,7 @@ class UserRedux extends Component {
                                 <label><FormattedMessage id="manage-user.position" /></label>
                                 <select className='form-control'
                                     onChange={(event) => { this.onChangeInput(event, 'position') }}
+                                    value={position}
                                 >
                                     {positions && positions.length > 0 && positions.map((item, index) => {
                                         return (
@@ -233,6 +235,7 @@ class UserRedux extends Component {
                                 <label><FormattedMessage id="manage-user.role" /></label>
                                 <select className='form-control'
                                     onChange={(event) => { this.onChangeInput(event, 'role') }}
+                                    value={role}
                                 >
                                     {roles && roles.length > 0 && roles.map((item, index) => {
                                         return (
