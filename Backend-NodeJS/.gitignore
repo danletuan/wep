@@ -2,5 +2,5 @@
 /vendor
 /.idea
 .idea/
-.env
+# .env
 package-lock.json
