@@ -30,9 +30,9 @@ let getTopDoctorHome = (limitInput) => {
 
 let getAllDoctors = () => {
     return new Promise(async (resolve, reject) => {
-        try{
+        try {
             let doctors = await db.User.findAll({
-                where: {roleId: "R2"},
+                where: { roleId: "R2" },
                 attributes: {
                     exclude: ['password', 'image']
                 }
@@ -42,7 +42,7 @@ let getAllDoctors = () => {
                 errCode: 0,
                 data: doctors
             })
-        }catch(e){
+        } catch (e) {
             reject(e)
         }
     })
@@ -51,12 +51,12 @@ let getAllDoctors = () => {
 let saveDetailInforDoctor = (inputData) => {
     return new Promise(async (resolve, reject) => {
         try {
-            if (!inputData.doctorId || !inputData.contentHTML || !inputData.contentMarkdown ) {
+            if (!inputData.doctorId || !inputData.contentHTML || !inputData.contentMarkdown) {
                 resolve({
                     errCode: 1,
                     errMessage: 'Missing parameter'
                 })
-            }else{
+            } else {
                 await db.MarkDown.create({
                     contentHTML: inputData.contentHTML,
                     contentMarkdown: inputData.contentMarkdown,
@@ -76,30 +76,37 @@ let saveDetailInforDoctor = (inputData) => {
 }
 
 let getDetailDoctorById = (inputId) => {
-    return new Promise(async (resolve,reject) => {
+    return new Promise(async (resolve, reject) => {
         try {
             if (!inputId) {
                 resolve({
-                    errCode : 1,
+                    errCode: 1,
                     errMessage: 'Missing required parameter'
                 })
-            }else{
+            } else {
                 let data = await db.User.findOne({
                     where: {
                         id: inputId
                     },
                     attributes: {
-                        exclude: ['password', 'image']
+                        exclude: ['password']
                     },
                     include: [
-                        { model: db.MarkDown,
-                            attributes: ['description', 'contentHTML', 'contentMarkdown']},
+                        {
+                            model: db.MarkDown,
+                            attributes: ['description', 'contentHTML', 'contentMarkdown']
+                        },
 
                         { model: db.Allcode, as: 'positionData', attributes: ['valueEn', 'valueVi'] }
                     ],
-                    raw: true,
+                    raw: false,
                     nest: true
                 })
+                if (data && data.image) {
+                    data.image = new Buffer(data.image, 'base64').toString('binary');
+                }
+
+                if (!data) data = {};
                 resolve({
                     errCode: 0,
                     data: data
