@@ -77,7 +77,6 @@ class ManageDoctor extends Component {
             description: this.state.description,
             doctorId: this.state.selectedOption.value
         })
-     
     }
     handleChange = selectedOption => {
         this.setState({ selectedOption })
