@@ -76,7 +76,7 @@ class UserRedux extends Component {
                 role: arrRoles && arrRoles.length > 0 ? arrRoles[0].keyMap : '',
                 position: arrPositions && arrPositions.length > 0 ? arrPositions[0].keyMap : '',
                 avatar: '',
-                action: CRUD_ACTIONS.CRAETE,
+                action: CRUD_ACTIONS.CREATE,
                 previewImgURL: '',
 
             }
@@ -108,7 +108,7 @@ class UserRedux extends Component {
         let isValid = this.checkValidInput();
         if (isValid === false) return;
         let { action } = this.state;
-        if (action === CRUD_ACTIONS.CRAETE) {
+        if (action === CRUD_ACTIONS.CREATE) {
             this.props.createNewUser({
                 email: this.state.email,
                 password: this.state.password,

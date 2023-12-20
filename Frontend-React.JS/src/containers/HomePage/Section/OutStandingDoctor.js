@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router';
 
 class OutStandingDoctor extends Component {
-    
+
     constructor(props) {
         super(props)
         this.state = {
@@ -28,8 +28,10 @@ class OutStandingDoctor extends Component {
     }
 
     handleViewDetailDoctor = (doctor) => {
-        console.log('detail doctor', doctor)
-        this.props.history.push(`/detail-doctor/${doctor.id}`)
+        if (this.props.history) {
+            this.props.history.push(`/detail-doctor/${doctor.id}`)
+        }
+
     }
 
     render() {
