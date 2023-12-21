@@ -4,11 +4,11 @@ import { FormattedMessage } from 'react-intl';
 import './ManageSchedule.scss';
 import Select from 'react-select';
 import * as actions from '../../../store/actions';
-import { CRUD_ACTIONS, LANGUAGES } from '../../../utils';
+import { CRUD_ACTIONS, LANGUAGES, dateFormat } from '../../../utils';
 import DatePicker from '../../../components/Input/DatePicker';
 import moment from 'moment';
-import { FormattedDate } from '../../../components/Formating/FormattedDate';
-import { startCase } from 'lodash';
+import { toast } from 'react-toastify';
+import _ from 'lodash';
 
 class ManageSchedule extends Component {
     constructor(props) {
@@ -35,8 +35,15 @@ class ManageSchedule extends Component {
         }
 
         if (prevProps.allScheduleTime !== this.props.allScheduleTime) {
+            let data = this.props.allScheduleTime;
+            if (data && data.length > 0) {
+                data = data.map(item => ({
+                    ...item, isSelected: false
+
+                }))
+            }
             this.setState({
-                rangeTime: this.props.allScheduleTime
+                rangeTime: data
             })
         }
         // if (prevProps.language !== this.props.language) {
@@ -75,6 +82,53 @@ class ManageSchedule extends Component {
 
     }
 
+    handleClickBtnTime = (time) => {
+        let { rangeTime } = this.state;
+        if (rangeTime && rangeTime.length > 0) {
+            rangeTime = rangeTime.map(item => {
+                if (item.id === time.id) {
+                    item.isSelected = !item.isSelected
+                }
+                return item
+            })
+            this.setState({
+                rangeTime: rangeTime
+            })
+        }
+    }
+
+
+    handleSaveSchedule = () => {
+        let { rangeTime, selectedDoctor, currentDate } = this.state;
+        let result = []
+        if (!currentDate) {
+            toast.error("Invalid date!")
+        }
+        if (!selectedDoctor && _.isEmpty(selectedDoctor)) {
+            toast.error("Invalid selected doctor!");
+            return;
+        }
+        let formattedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
+
+        if (rangeTime && rangeTime.length > 0) {
+            let selectedTime = rangeTime.filter(item => item.isSelected === true);
+            if (selectedTime && selectedTime.length > 0) {
+                selectedTime.map(schedule => {
+                    let object = {};
+                    object.doctorId = selectedDoctor.value;
+                    object.date = formattedDate;
+                    object.time = schedule.keyMap;
+                    result.push(object);
+                })
+
+            } else {
+                toast.error("Invalid selected time!");
+                return;
+            }
+        }
+        console.log('res', result)
+    }
+
     render() {
         let { rangeTime } = this.state;
         let { language } = this.props;
@@ -111,7 +165,8 @@ class ManageSchedule extends Component {
                             {rangeTime && rangeTime.length > 0 &&
                                 rangeTime.map((item, index) => {
                                     return (
-                                        <button className='btn btn-schedule' key={index}>
+                                        <button className={item.isSelected === true ? 'btn btn-schedule active' : 'btn btn-schedule'}
+                                            key={index} onClick={() => this.handleClickBtnTime(item)}>
                                             {language === LANGUAGES.VI ? item.valueVi : item.valueEn}
                                         </button>
                                     )
@@ -119,7 +174,8 @@ class ManageSchedule extends Component {
                             }
                         </div>
                         <div className='col-12'>
-                            <button className='btn btn-primary btn-save-schedule'>
+                            <button className='btn btn-primary btn-save-schedule'
+                                onClick={() => this.handleSaveSchedule()}>
                                 <FormattedMessage id='manage-schedule.save' />
                             </button>
                         </div>
@@ -130,8 +186,8 @@ class ManageSchedule extends Component {
             </div>
         );
     }
-}
 
+}
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
