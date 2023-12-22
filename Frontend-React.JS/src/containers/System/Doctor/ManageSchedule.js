@@ -133,12 +133,17 @@ class ManageSchedule extends Component {
             doctorId: selectedDoctor.value,
             date: formattedDate
         })
-        console.log('res', res)
+        if (res && res.errCode === 0) {
+            toast.success('Save data success')
+        } else {
+            toast.error('Save data failed')
+        }
     }
 
     render() {
         let { rangeTime } = this.state;
         let { language } = this.props;
+
         return (
             <div className='manage-schedule-container'>
                 <div className='m-s-title'>
@@ -165,7 +170,7 @@ class ManageSchedule extends Component {
                                 className='form-control'
 
                                 value={this.state.currentDate}
-                                minDate={new Date()}
+                                minDate={new Date().setHours(0, 0, 0, 0)}
                             />
                         </div>
                         <div className='col-12 pick-hour-container'>
