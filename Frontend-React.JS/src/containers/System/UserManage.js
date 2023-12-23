@@ -112,7 +112,6 @@ class UserManage extends Component {
 
 
     render() {
-        console.log('check render', this.state)
         let arrUsers = this.state.arrUsers;
 
         return (
