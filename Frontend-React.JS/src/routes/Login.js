@@ -1,32 +1,31 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { push } from "connected-react-router";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {push} from "connected-react-router";
 
 import * as actions from "../store/actions";
-import { KeyCodeUtils, LanguageUtils } from "../utils";
+import {KeyCodeUtils, LanguageUtils} from "../utils";
 
 import userIcon from '../../src/assets/images/user.svg';
 import passIcon from '../../src/assets/images/pass.svg';
 import './Login.scss';
-import { FormattedMessage } from 'react-intl';
-import { adminService } from '../../services/adminService';
+import {FormattedMessage} from 'react-intl';
+import {adminService} from '../../services/adminService';
 
 
 class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.btnLogin = React.createRef();
-    }
-
     initialState = {
         username: '',
         password: '',
         loginError: ''
     }
-
     state = {
         ...this.initialState
     };
+
+    constructor(props) {
+        super(props);
+        this.btnLogin = React.createRef();
+    }
 
     refresh = () => {
         this.setState({
@@ -35,23 +34,23 @@ class Login extends Component {
     }
 
     onUsernameChange = (e) => {
-        this.setState({ username: e.target.value })
+        this.setState({username: e.target.value})
     }
 
     onPasswordChange = (e) => {
-        this.setState({ password: e.target.value })
+        this.setState({password: e.target.value})
     }
 
     redirectToSystemPage = () => {
-        const { navigate } = this.props;
+        const {navigate} = this.props;
         const redirectPath = '/system/user-manage';
         navigate(`${redirectPath}`);
     }
 
     processLogin = () => {
-        const { username, password } = this.state;
+        const {username, password} = this.state;
 
-        const { adminLoginSuccess, adminLoginFail } = this.props;
+        const {adminLoginSuccess, adminLoginFail} = this.props;
         let loginBody = {
             username: 'admin',
             password: '123456'
@@ -92,23 +91,23 @@ class Login extends Component {
         document.removeEventListener('keydown', this.handlerKeyDown);
         // fix Warning: Can't perform a React state update on an unmounted component
         this.setState = (state, callback) => {
-            return;
+
         };
     }
 
     render() {
-        const { username, password, loginError } = this.state;
-        const { lang } = this.props;
+        const {username, password, loginError} = this.state;
+        const {lang} = this.props;
 
         return (
             <div className="login-wrapper">
                 <div className="login-container">
                     <div className="form_login">
                         <h2 className="title">
-                            <FormattedMessage id="login.login" />
+                            <FormattedMessage id="login.login"/>
                         </h2>
                         <div className="form-group icon-true">
-                            <img className="icon" src={userIcon} alt="this" />
+                            <img className="icon" src={userIcon} alt="this"/>
                             <input
                                 placeholder={LanguageUtils.getMessageByKey("login.username", lang)}
                                 id="username"
@@ -121,7 +120,7 @@ class Login extends Component {
                         </div>
 
                         <div id="phone-input-container" className="form-group icon-true">
-                            <img className="icon" src={passIcon} alt="this" />
+                            <img className="icon" src={passIcon} alt="this"/>
                             <input
                                 placeholder={LanguageUtils.getMessageByKey("login.password", lang)}
                                 id="password"

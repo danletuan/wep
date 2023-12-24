@@ -1,18 +1,18 @@
-import React, { Component, Fragment } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
+import React, {Component, Fragment} from 'react';
+import {Link, withRouter} from 'react-router-dom';
+import {FormattedMessage} from 'react-intl';
+import {connect} from 'react-redux';
 
 import './Navigator.scss';
 
 class MenuGroup extends Component {
 
     render() {
-        const { name, children } = this.props;
+        const {name, children} = this.props;
         return (
             <li className="menu-group">
                 <div className="menu-group-name">
-                    <FormattedMessage id={name} />
+                    <FormattedMessage id={name}/>
                 </div>
                 <ul className="menu-list list-unstyled">
                     {children}
@@ -25,7 +25,7 @@ class MenuGroup extends Component {
 class Menu extends Component {
 
     render() {
-        const { name, active, link, children, onClick, hasSubMenu, onLinkClick } = this.props;
+        const {name, active, link, children, onClick, hasSubMenu, onLinkClick} = this.props;
         return (
             <li className={"menu" + (hasSubMenu ? " has-sub-menu" : "") + ("") + (active ? " active" : "")}>
                 {hasSubMenu ? (
@@ -36,9 +36,9 @@ class Menu extends Component {
                             onClick={onClick}
                             aria-expanded={"false"}
                         >
-                            <FormattedMessage id={name} />
+                            <FormattedMessage id={name}/>
                             <div className="icon-right">
-                                <i className={"far fa-angle-right"} />
+                                <i className={"far fa-angle-right"}/>
                             </div>
                         </span>
                         <div>
@@ -48,10 +48,10 @@ class Menu extends Component {
                         </div>
                     </Fragment>
                 ) : (
-                        <Link to={link} className="menu-link" onClick={onLinkClick}>
-                            <FormattedMessage id={name} />
-                        </Link>
-                    )}
+                    <Link to={link} className="menu-link" onClick={onLinkClick}>
+                        <FormattedMessage id={name}/>
+                    </Link>
+                )}
             </li>
         );
     }
@@ -64,11 +64,11 @@ class SubMenu extends Component {
     };
 
     render() {
-        const { name, link, onLinkClick } = this.props;
+        const {name, link, onLinkClick} = this.props;
         return (
             <li className={"sub-menu " + this.getItemClass(link)}>
                 <Link to={link} className="sub-menu-link" onClick={onLinkClick}>
-                    <FormattedMessage id={name} />
+                    <FormattedMessage id={name}/>
                 </Link>
             </li>
         );
@@ -83,15 +83,15 @@ const withRouterInnerRef = (WrappedComponent) => {
 
     class InnerComponentWithRef extends React.Component {
         render() {
-            const { forwardRef, ...rest } = this.props;
-            return <WrappedComponent {...rest} ref={forwardRef} />;
+            const {forwardRef, ...rest} = this.props;
+            return <WrappedComponent {...rest} ref={forwardRef}/>;
         }
     }
 
-    const ComponentWithRef = withRouter(InnerComponentWithRef, { withRef: true });
+    const ComponentWithRef = withRouter(InnerComponentWithRef, {withRef: true});
 
     return React.forwardRef((props, ref) => {
-        return <ComponentWithRef {...props} forwardRef={ref} />;
+        return <ComponentWithRef {...props} forwardRef={ref}/>;
     });
 };
 
@@ -135,27 +135,27 @@ class Navigator extends Component {
     };
 
     checkActiveMenu = () => {
-        const { menus, location } = this.props;
+        const {menus, location} = this.props;
         outerLoop:
-        for (let i = 0; i < menus.length; i++) {
-            const group = menus[i];
-            if (group.menus && group.menus.length > 0) {
-                for (let j = 0; j < group.menus.length; j++) {
-                    const menu = group.menus[j];
-                    if (menu.subMenus && menu.subMenus.length > 0) {
-                        if (this.isMenuHasSubMenuActive(location, menu.subMenus, null)) {
-                            const key = i + '_' + j;
-                            this.setState({
-                                expandedMenu: {
-                                    [key]: true
-                                }
-                            });
-                            break outerLoop;
+            for (let i = 0; i < menus.length; i++) {
+                const group = menus[i];
+                if (group.menus && group.menus.length > 0) {
+                    for (let j = 0; j < group.menus.length; j++) {
+                        const menu = group.menus[j];
+                        if (menu.subMenus && menu.subMenus.length > 0) {
+                            if (this.isMenuHasSubMenuActive(location, menu.subMenus, null)) {
+                                const key = i + '_' + j;
+                                this.setState({
+                                    expandedMenu: {
+                                        [key]: true
+                                    }
+                                });
+                                break outerLoop;
+                            }
                         }
                     }
                 }
             }
-        }
     };
 
     componentDidMount() {
@@ -177,15 +177,16 @@ class Navigator extends Component {
     // };
 
     componentDidUpdate(prevProps, prevState) {
-        const { location } = this.props;
-        const { location: prevLocation } = prevProps;
+        const {location} = this.props;
+        const {location: prevLocation} = prevProps;
         if (location !== prevLocation) {
             this.checkActiveMenu();
-        };
+        }
+        ;
     };
 
     render() {
-        const { menus, location, onLinkClick } = this.props;
+        const {menus, location, onLinkClick} = this.props;
         return (
             <Fragment>
                 <ul className="navigator-menu list-unstyled">
@@ -234,13 +235,11 @@ class Navigator extends Component {
 }
 
 const mapStateToProps = state => {
-    return {
-    };
+    return {};
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-    }
+    return {}
 }
 
 export default withRouterInnerRef(connect(mapStateToProps, mapDispatchToProps)(Navigator));

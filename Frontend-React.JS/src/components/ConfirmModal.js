@@ -1,25 +1,23 @@
-import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
-import { Modal } from 'reactstrap';
+import React, {Component} from 'react';
+import {FormattedMessage} from 'react-intl';
+import {connect} from 'react-redux';
+import {Modal} from 'reactstrap';
 
 import './ConfirmModal.scss';
 import * as actions from "../store/actions";
-import { KeyCodeUtils } from "../utils";
+import {KeyCodeUtils} from "../utils";
 
 class ConfirmModal extends Component {
+
+    initialState = {};
+    state = {
+        ...this.initialState
+    };
 
     constructor(props) {
         super(props);
         this.acceptBtnRef = React.createRef();
     }
-
-    initialState = {
-    };
-
-    state = {
-        ...this.initialState
-    };
 
     componentDidMount() {
         document.addEventListener('keydown', this.handlerKeyDown);
@@ -38,7 +36,7 @@ class ConfirmModal extends Component {
     }
 
     onAcceptBtnClick = () => {
-        const { contentOfConfirmModal } = this.props;
+        const {contentOfConfirmModal} = this.props;
         if (contentOfConfirmModal.handleFunc) {
             contentOfConfirmModal.handleFunc(contentOfConfirmModal.dataFunc);
         }
@@ -55,17 +53,17 @@ class ConfirmModal extends Component {
     }
 
     render() {
-        const { contentOfConfirmModal } = this.props;
+        const {contentOfConfirmModal} = this.props;
 
         return (
             <Modal isOpen={contentOfConfirmModal.isOpen} className='confirm-modal' centered={true}>
                 <div className="modal-header">
                     <div className="modal-title">
-                        <FormattedMessage id={"common.confirm"} />
+                        <FormattedMessage id={"common.confirm"}/>
                     </div>
                     <div className="col-auto">
                         <button className="btn btn-close" onClick={this.onClose}>
-                            <i className="fal fa-times" />
+                            <i className="fal fa-times"/>
                         </button>
                     </div>
                 </div>
@@ -74,25 +72,27 @@ class ConfirmModal extends Component {
                     <div className="confirm-modal-content">
                         <div className="row">
                             <div className="col-12">
-                                <FormattedMessage id={contentOfConfirmModal.messageId ? contentOfConfirmModal.messageId : "common.confirm-this-task"} />
+                                <FormattedMessage
+                                    id={contentOfConfirmModal.messageId ? contentOfConfirmModal.messageId : "common.confirm-this-task"}/>
                             </div>
 
-                            <hr />
+                            <hr/>
 
                             <div className="col-12">
                                 <div className="btn-container text-center">
-                                    <button className="btn btn-add" onClick={this.onClose} >
-                                        <FormattedMessage id="common.close" />
+                                    <button className="btn btn-add" onClick={this.onClose}>
+                                        <FormattedMessage id="common.close"/>
                                     </button>
-                                    <button ref={this.acceptBtnRef} className="btn btn-add" onClick={this.onAcceptBtnClick}>
-                                        <FormattedMessage id={"common.accept"} />
+                                    <button ref={this.acceptBtnRef} className="btn btn-add"
+                                            onClick={this.onAcceptBtnClick}>
+                                        <FormattedMessage id={"common.accept"}/>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </Modal >
+            </Modal>
         );
     }
 

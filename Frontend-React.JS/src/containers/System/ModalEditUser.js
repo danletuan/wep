@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { emitter } from '../../utils/emitter';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Button, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 import _ from 'lodash';
 
 class ModalEditUser extends Component {
@@ -17,6 +15,7 @@ class ModalEditUser extends Component {
             address: '',
         };
     }
+
     componentDidMount() {
         let user = this.props.currentUser;
         if (user && !_.isEmpty(user)) {
@@ -35,7 +34,7 @@ class ModalEditUser extends Component {
         this.props.tggleFromParent();
     };
     handleOnChageInput = (event, id) => {
-        let copyState = { ...this.state };
+        let copyState = {...this.state};
         copyState[id] = event.target.value;
         this.setState({
             ...copyState
@@ -78,7 +77,9 @@ class ModalEditUser extends Component {
                             <label>Email</label>
                             <input
                                 type='text'
-                                onChange={(event) => { this.handleOnChageInput(event, "email") }}
+                                onChange={(event) => {
+                                    this.handleOnChageInput(event, "email")
+                                }}
                                 value={this.state.email}
                                 disabled
                             ></input>
@@ -87,7 +88,9 @@ class ModalEditUser extends Component {
                             <label>Password</label>
                             <input
                                 type='password'
-                                onChange={(event) => { this.handleOnChageInput(event, "password") }}
+                                onChange={(event) => {
+                                    this.handleOnChageInput(event, "password")
+                                }}
                                 value={this.state.password}
                                 disabled
                             ></input>
@@ -96,7 +99,9 @@ class ModalEditUser extends Component {
                             <label>First name</label>
                             <input
                                 type='text'
-                                onChange={(event) => { this.handleOnChageInput(event, "firstName") }}
+                                onChange={(event) => {
+                                    this.handleOnChageInput(event, "firstName")
+                                }}
                                 value={this.state.firstName}
                             ></input>
                         </div>
@@ -104,7 +109,9 @@ class ModalEditUser extends Component {
                             <label>Last name</label>
                             <input
                                 type='text'
-                                onChange={(event) => { this.handleOnChageInput(event, "lastName") }}
+                                onChange={(event) => {
+                                    this.handleOnChageInput(event, "lastName")
+                                }}
                                 value={this.state.lastName}
                             ></input>
                         </div>
@@ -112,7 +119,9 @@ class ModalEditUser extends Component {
                             <label>Address</label>
                             <input
                                 type='text'
-                                onChange={(event) => { this.handleOnChageInput(event, "address") }}
+                                onChange={(event) => {
+                                    this.handleOnChageInput(event, "address")
+                                }}
                                 value={this.state.address}
                             ></input>
                         </div>
@@ -123,7 +132,9 @@ class ModalEditUser extends Component {
                     <Button
                         color="primary"
                         className='px-3'
-                        onClick={() => { this.handleSaveUser() }}>
+                        onClick={() => {
+                            this.handleSaveUser()
+                        }}>
                         Save
                     </Button>
                     <Button color="secondary" className='px-3' onClick={this.toggle}>

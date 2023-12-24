@@ -16,14 +16,16 @@
 
   .btn-container {
     margin-top: 10px;
+
     .btn {
       width: 100px;
+
       &:first-child {
         margin-right: 10px;
       }
     }
   }
-  
+
   .custom-form-group {
     margin: 5px 0;
 

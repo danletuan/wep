@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { FormattedMessage } from 'react-intl';
+import React, {Component} from 'react';
+import {connect} from "react-redux";
+import {FormattedMessage} from 'react-intl';
 import './ManageSchedule.scss';
 import Select from 'react-select';
 import * as actions from '../../../store/actions';
-import { CRUD_ACTIONS, LANGUAGES, dateFormat } from '../../../utils';
+import {LANGUAGES} from '../../../utils';
 import DatePicker from '../../../components/Input/DatePicker';
-import moment from 'moment';
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 import _ from 'lodash';
-import { saveBulkScheduleDoctor } from '../../../services/userService';
+import {saveBulkScheduleDoctor} from '../../../services/userService';
 
 class ManageSchedule extends Component {
     constructor(props) {
@@ -57,7 +56,7 @@ class ManageSchedule extends Component {
 
     buildDataInputSelect = (inputData) => {
         let result = [];
-        let { language } = this.props;
+        let {language} = this.props;
         if (inputData && inputData.length > 0) {
             inputData.map((item, index) => {
                 let object = {};
@@ -72,10 +71,10 @@ class ManageSchedule extends Component {
     }
 
     handleChangeSelected = async (selectedOption) => {
-        this.setState({ selectedDoctor: selectedOption })
+        this.setState({selectedDoctor: selectedOption})
 
     }
-        ;
+    ;
     handleOnChangeDatePicker = (date) => {
         this.setState({
             currentDate: date[0]
@@ -84,7 +83,7 @@ class ManageSchedule extends Component {
     }
 
     handleClickBtnTime = (time) => {
-        let { rangeTime } = this.state;
+        let {rangeTime} = this.state;
         if (rangeTime && rangeTime.length > 0) {
             rangeTime = rangeTime.map(item => {
                 if (item.id === time.id) {
@@ -100,7 +99,7 @@ class ManageSchedule extends Component {
 
 
     handleSaveSchedule = async () => {
-        let { rangeTime, selectedDoctor, currentDate } = this.state;
+        let {rangeTime, selectedDoctor, currentDate} = this.state;
         let result = []
         if (!currentDate) {
             toast.error("Invalid date!")
@@ -141,19 +140,19 @@ class ManageSchedule extends Component {
     }
 
     render() {
-        let { rangeTime } = this.state;
-        let { language } = this.props;
+        let {rangeTime} = this.state;
+        let {language} = this.props;
 
         return (
             <div className='manage-schedule-container'>
                 <div className='m-s-title'>
-                    <FormattedMessage id='manage-schedule.title' />
+                    <FormattedMessage id='manage-schedule.title'/>
                 </div>
                 <div className='container'>
                     <div className='row'>
                         <div className='col-6 form-group'>
                             <label>
-                                <FormattedMessage id='manage-schedule.choose-doctor' />
+                                <FormattedMessage id='manage-schedule.choose-doctor'/>
                             </label>
                             <Select
                                 value={this.state.selectedDoctor}
@@ -163,7 +162,7 @@ class ManageSchedule extends Component {
                         </div>
                         <div className='col-6 form-group'>
                             <label>
-                                <FormattedMessage id='manage-schedule.choose-date' />
+                                <FormattedMessage id='manage-schedule.choose-date'/>
                             </label>
                             <DatePicker
                                 onChange={this.handleOnChangeDatePicker}
@@ -177,7 +176,8 @@ class ManageSchedule extends Component {
                             {rangeTime && rangeTime.length > 0 &&
                                 rangeTime.map((item, index) => {
                                     return (
-                                        <button className={item.isSelected === true ? 'btn btn-schedule active' : 'btn btn-schedule'}
+                                        <button
+                                            className={item.isSelected === true ? 'btn btn-schedule active' : 'btn btn-schedule'}
                                             key={index} onClick={() => this.handleClickBtnTime(item)}>
                                             {language === LANGUAGES.VI ? item.valueVi : item.valueEn}
                                         </button>
@@ -187,8 +187,8 @@ class ManageSchedule extends Component {
                         </div>
                         <div className='col-12'>
                             <button className='btn btn-primary btn-save-schedule'
-                                onClick={() => this.handleSaveSchedule()}>
-                                <FormattedMessage id='manage-schedule.save' />
+                                    onClick={() => this.handleSaveSchedule()}>
+                                <FormattedMessage id='manage-schedule.save'/>
                             </button>
                         </div>
 
@@ -200,6 +200,7 @@ class ManageSchedule extends Component {
     }
 
 }
+
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,

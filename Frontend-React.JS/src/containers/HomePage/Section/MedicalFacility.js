@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import Slider from 'react-slick';
 import './MedicalFacility.scss';
 
@@ -57,8 +57,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-    };
+    return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MedicalFacility);

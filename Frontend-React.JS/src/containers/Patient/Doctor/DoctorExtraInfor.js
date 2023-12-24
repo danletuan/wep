@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from "react-redux";
-import Select from 'react-select';
+import React, {Component} from 'react';
+import {connect} from "react-redux";
 import './DoctorExtraInfor.scss';
-import { FormattedMessage } from 'react-intl';
-import { LANGUAGES } from '../../../utils';
+import {FormattedMessage} from 'react-intl';
+import {LANGUAGES} from '../../../utils';
 import NumberFormat from 'react-number-format'
-import { getExtraInforDoctorById } from '../../../services/userService';
+import {getExtraInforDoctorById} from '../../../services/userService';
+
 class DoctorExtraInfor extends Component {
 
     constructor(props) {
@@ -17,23 +17,10 @@ class DoctorExtraInfor extends Component {
     }
 
 
-
-
-
-
-
-
     async componentDidMount() {
 
 
-
-        this.setState({
-
-
-        })
-
-
-
+        this.setState({})
 
 
     }
@@ -61,13 +48,13 @@ class DoctorExtraInfor extends Component {
     }
 
     render() {
-        let { isShowDetailInfor, extraInfor } = this.state;
-        let { language } = this.props;
+        let {isShowDetailInfor, extraInfor} = this.state;
+        let {language} = this.props;
         return (
             <div className='doctor-extra-infor-container'>
                 <div className='content-up'>
                     <div className='text-address'>
-                        <FormattedMessage id='patient.extra-infor-doctor.text-address' />
+                        <FormattedMessage id='patient.extra-infor-doctor.text-address'/>
                     </div>
                     <div className='name-clinic'>
                         {extraInfor && extraInfor.nameClinic ? extraInfor.nameClinic : ''}
@@ -81,7 +68,7 @@ class DoctorExtraInfor extends Component {
                 <div className='content-down'>
                     {isShowDetailInfor === false &&
                         <div className='short-infor'>
-                            <FormattedMessage id='patient.extra-infor-doctor.price' />
+                            <FormattedMessage id='patient.extra-infor-doctor.price'/>
                             {extraInfor && extraInfor.priceData && language === LANGUAGES.VI
                                 &&
                                 <NumberFormat
@@ -104,7 +91,7 @@ class DoctorExtraInfor extends Component {
                                 />
                             }
                             <span className='detail' onClick={() => this.showHideDetailInfor(true)}>
-                                <FormattedMessage id='patient.extra-infor-doctor.detail' />
+                                <FormattedMessage id='patient.extra-infor-doctor.detail'/>
                             </span>
                         </div>
                     }
@@ -112,12 +99,12 @@ class DoctorExtraInfor extends Component {
                     {isShowDetailInfor === true &&
                         <>
                             <div className='title-price'>
-                                <FormattedMessage id='patient.extra-infor-doctor.price' />
+                                <FormattedMessage id='patient.extra-infor-doctor.price'/>
                             </div>
                             <div className='detail-infor'>
                                 <div className='price'>
                                     <span className='left'>
-                                        <FormattedMessage id='patient.extra-infor-doctor.price' />
+                                        <FormattedMessage id='patient.extra-infor-doctor.price'/>
                                     </span>
                                     <span className='right'>
 
@@ -151,12 +138,12 @@ class DoctorExtraInfor extends Component {
 
                             </div>
                             <div className='payment'>
-                                <FormattedMessage id='patient.extra-infor-doctor.payment' />
+                                <FormattedMessage id='patient.extra-infor-doctor.payment'/>
                                 {extraInfor && extraInfor.paymentData && (language === LANGUAGES.VI ? extraInfor.paymentData.valueVi : extraInfor.paymentData.valueEn)}
                             </div>
                             <div className='hide-price'>
                                 <span onClick={() => this.showHideDetailInfor(false)}>
-                                    <FormattedMessage id='patient.extra-infor-doctor.hide-price' />
+                                    <FormattedMessage id='patient.extra-infor-doctor.hide-price'/>
                                 </span>
                             </div>
                         </>
@@ -177,8 +164,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-    };
+    return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoctorExtraInfor);

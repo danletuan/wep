@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import Slider from 'react-slick';
 import * as actions from '../../../store/actions';
-import { LANGUAGES } from '../../../utils';
-import { FormattedMessage } from 'react-intl';
-import { withRouter } from 'react-router';
+import {LANGUAGES} from '../../../utils';
+import {FormattedMessage} from 'react-intl';
+import {withRouter} from 'react-router';
 
 class OutStandingDoctor extends Component {
 
@@ -14,6 +14,7 @@ class OutStandingDoctor extends Component {
             arrDoctors: [],
         }
     }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.topDoctorsRedux !== this.props.topDoctorsRedux) {
             this.setState({
@@ -37,16 +38,16 @@ class OutStandingDoctor extends Component {
     render() {
 
         let arrDoctors = this.state.arrDoctors;
-        let { language } = this.props;
+        let {language} = this.props;
         return (
             <div className='section-share section-outstanding-doctor'>
                 <div className='section-container'>
                     <div className='section-header'>
                         <span className='title-section'>
-                            <FormattedMessage id='homepage.outstanding-doctor' />
+                            <FormattedMessage id='homepage.outstanding-doctor'/>
                         </span>
                         <button className='btn-section'>
-                            <FormattedMessage id='homepage.more-infor' />
+                            <FormattedMessage id='homepage.more-infor'/>
                         </button>
                     </div>
                     <div className='section-body'>
@@ -61,11 +62,12 @@ class OutStandingDoctor extends Component {
                                     let nameVi = `${item.positionData.valueVi},${item.lastName} ${item.firstName}`
                                     let nameEn = `${item.positionData.valueEn},${item.firstName} ${item.lastName}`
                                     return (
-                                        <div className='section-customize' key={index} onClick={() => this.handleViewDetailDoctor(item)}>
+                                        <div className='section-customize' key={index}
+                                             onClick={() => this.handleViewDetailDoctor(item)}>
                                             <div className='customize-boder'>
                                                 <div className='outer-bg'>
                                                     <div className='bg-image section-outstanding-doctor'
-                                                        style={{ backgroundImage: `url(${imageBase64})` }}
+                                                         style={{backgroundImage: `url(${imageBase64})`}}
 
                                                     >
 

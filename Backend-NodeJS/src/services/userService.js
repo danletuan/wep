@@ -41,14 +41,14 @@ let handleUserLogin = (email, password) => {
                 }
                 else {
                     userData.errCode = 2;
-                    userData.errMessage = `Your's password not found`
+                    userData.errMessage = `Yours password not found`
 
                 }
 
             }
             else {
                 userData.errCode = 1;
-                userData.errMessage = `Your's Email isn't exist in your system Plz try other email!`
+                userData.errMessage = `Yours Email isn't exist in your system Plz try other email!`
             }
 
             resolve(userData)
@@ -117,7 +117,7 @@ let createNewUser = (data) => {
             if (check === true) {
                 resolve({
                     errCode: 1,
-                    errMessage: 'Your email is alrady used,Plz try another email'
+                    errMessage: 'Your email is already used,Plz try another email'
                 })
             }
             else {
@@ -171,7 +171,7 @@ let updateUserData = (data) => {
             if (!data.id || !data.roleId || !data.positionId || !data.gender) {
                 resolve({
                     errCode: 2,
-                    errMessage: "Missing requaired paramaters"
+                    errMessage: "Missing required paramaters"
                 })
             }
             let user = await db.User.findOne({

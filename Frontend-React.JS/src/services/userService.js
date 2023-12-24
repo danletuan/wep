@@ -1,7 +1,7 @@
 import axios from "../axios";
 
 const handleLoginApi = (userEmail, userPassword) => {
-    return axios.post('/api/login', { email: userEmail, password: userPassword });
+    return axios.post('/api/login', {email: userEmail, password: userPassword});
 }
 
 const getAllUsers = (inputId) => {
@@ -53,6 +53,18 @@ const getExtraInforDoctorById = (doctorId) => {
     return axios.get(`/api/get-extra-infor-doctor-by-id?doctorId=${doctorId}`);
 }
 
+const getProfileDoctorById = (doctorId) => {
+    return axios.get(`/api/get-profile-doctor-by-id?doctorId=${doctorId}`)
+}
+
+const postPatientBookAppointment = (data) => {
+    return axios.post('/api/patient-book-appointment', data)
+}
+
+const postVerifyBookAppointment = (data) => {
+    return axios.post('/api/verify-book-appointment', data)
+}
+
 export {
     handleLoginApi, getAllUsers,
     createNewUserService, deleteUserService,
@@ -60,6 +72,7 @@ export {
     getTopDoctorHomeService, getAllDoctors,
     saveDetailDoctorService, getDetailInforDoctor,
     saveBulkScheduleDoctor, getScheduleDoctorByDate,
-    getExtraInforDoctorById
+    getExtraInforDoctorById, getProfileDoctorById,
+    postPatientBookAppointment, postVerifyBookAppointment
 }
 

@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import './HomeHeader'
 import './HomeHeader.scss'
 import logo from '../../assets/images/logo.svg';
-import { FormattedMessage } from 'react-intl';
-import { LANGUAGES } from '../../utils';
-import { changeLanguageApp } from '../../store/actions';
-import { withRouter } from 'react-router';
+import {FormattedMessage} from 'react-intl';
+import {LANGUAGES} from '../../utils';
+import {changeLanguageApp} from '../../store/actions';
+import {withRouter} from 'react-router';
 
 class HomeHeader extends Component {
 
@@ -20,6 +19,7 @@ class HomeHeader extends Component {
             this.props.history.push(`/home`)
         }
     }
+
     render() {
         let language = this.props.language;
         return (
@@ -28,28 +28,32 @@ class HomeHeader extends Component {
                     <div className="home-header-content">
                         <div className='left-content'>
                             <i className='fas fa-bars'></i>
-                            <img className='header-logo' src={logo} onClick={() => this.returnToHome()}></img>
+                            <img className='header-logo' src={logo} onClick={() => this.returnToHome()} alt={}></img>
                         </div>
                         <div className='center-content'>
                             <div className='child-content'>
                                 <div><b><FormattedMessage id="homeheader.speciality"></FormattedMessage></b></div>
-                                <div className='subs-title' ><FormattedMessage id="homeheader.searchdoctor"></FormattedMessage></div>
+                                <div className='subs-title'><FormattedMessage
+                                    id="homeheader.searchdoctor"></FormattedMessage></div>
                             </div>
                             <div className='child-content'>
                                 <div><b><FormattedMessage id="homeheader.health-facility"></FormattedMessage></b></div>
-                                <div className='subs-title' ><FormattedMessage id="homeheader.select-room"></FormattedMessage></div>
+                                <div className='subs-title'><FormattedMessage
+                                    id="homeheader.select-room"></FormattedMessage></div>
                             </div>
                             <div className='child-content'>
                                 <div><b><FormattedMessage id="homeheader.doctor"></FormattedMessage></b></div>
-                                <div className='subs-title' ><FormattedMessage id="homeheader.select-doctor"></FormattedMessage></div>
+                                <div className='subs-title'><FormattedMessage
+                                    id="homeheader.select-doctor"></FormattedMessage></div>
                             </div>
                             <div className='child-content'>
                                 <div><b><FormattedMessage id="homeheader.fee"></FormattedMessage></b></div>
-                                <div className='subs-title' ><FormattedMessage id="homeheader.check-health"></FormattedMessage></div>
+                                <div className='subs-title'><FormattedMessage
+                                    id="homeheader.check-health"></FormattedMessage></div>
                             </div>
                         </div>
                         <div className='right-content'>
-                            <div className='support'> <i className='fas fa-question-circle'></i>
+                            <div className='support'><i className='fas fa-question-circle'></i>
                                 <FormattedMessage id="homeheader.support"></FormattedMessage>
                             </div>
                             <div className={language === LANGUAGES.VI ? 'language-vi active' : 'language-vi'}>
@@ -76,27 +80,33 @@ class HomeHeader extends Component {
                             <div className='options'>
                                 <div className='option-child'>
                                     <div className='icon-child'><i className='fas fa-hospital'></i></div>
-                                    <div className='text-child'><FormattedMessage id="banner.child1"></FormattedMessage></div>
+                                    <div className='text-child'><FormattedMessage id="banner.child1"></FormattedMessage>
+                                    </div>
                                 </div>
                                 <div className='option-child'>
                                     <div className='icon-child'><i className='fas fa-mobile-alt'></i></div>
-                                    <div className='text-child'><FormattedMessage id="banner.child2"></FormattedMessage></div>
+                                    <div className='text-child'><FormattedMessage id="banner.child2"></FormattedMessage>
+                                    </div>
                                 </div>
                                 <div className='option-child'>
                                     <div className='icon-child'><i className='fas fa-procedures'></i></div>
-                                    <div className='text-child'><FormattedMessage id="banner.child3"></FormattedMessage></div>
+                                    <div className='text-child'><FormattedMessage id="banner.child3"></FormattedMessage>
+                                    </div>
                                 </div>
                                 <div className='option-child'>
                                     <div className='icon-child'><i className='fas fa-flask'></i></div>
-                                    <div className='text-child'><FormattedMessage id="banner.child4"></FormattedMessage></div>
+                                    <div className='text-child'><FormattedMessage id="banner.child4"></FormattedMessage>
+                                    </div>
                                 </div>
                                 <div className='option-child'>
                                     <div className='icon-child'><i className='fas fa-user-md'></i></div>
-                                    <div className='text-child'><FormattedMessage id="banner.child5"></FormattedMessage></div>
+                                    <div className='text-child'><FormattedMessage id="banner.child5"></FormattedMessage>
+                                    </div>
                                 </div>
                                 <div className='option-child'>
                                     <div className='icon-child'><i className='fas fa-briefcase-medical'></i></div>
-                                    <div className='text-child'><FormattedMessage id="banner.child6"></FormattedMessage></div>
+                                    <div className='text-child'><FormattedMessage id="banner.child6"></FormattedMessage>
+                                    </div>
                                 </div>
                             </div>
                         </div>

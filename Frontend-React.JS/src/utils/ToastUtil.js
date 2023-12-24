@@ -1,5 +1,5 @@
 import React from 'react';
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 import axios from 'axios';
 
 import CustomToast from "../components/CustomToast";
@@ -34,6 +34,7 @@ class ToastUtil {
     static errorRaw(title, message, autoCloseDelay = 3000) {
         this.show(TYPE_ERROR, title, message, true, autoCloseDelay);
     }
+
     static errorApi(error, title = 'common.fail-to-load-data', autoCloseDelay = 3000) {
         if (axios.isCancel(error)) {
             // Do nothing if request was cancelled
@@ -55,7 +56,7 @@ class ToastUtil {
                 message = error.errorMessage
             }
         }
-        toast.error(<CustomToast titleId={title} message={message} messageId={messageId} time={new Date()} />, {
+        toast.error(<CustomToast titleId={title} message={message} messageId={messageId} time={new Date()}/>, {
             position: toast.POSITION.BOTTOM_RIGHT,
             pauseOnHover: true,
             autoClose: autoCloseDelay
@@ -63,7 +64,8 @@ class ToastUtil {
     }
 
     static show(type, title, message, rawMessage = false, autoCloseDelay = 3000) {
-        const content = <CustomToast titleId={title} messageId={rawMessage ? null : message} message={rawMessage ? message : null} time={new Date()} />;
+        const content = <CustomToast titleId={title} messageId={rawMessage ? null : message}
+                                     message={rawMessage ? message : null} time={new Date()}/>;
         const options = {
             position: toast.POSITION.BOTTOM_RIGHT,
             pauseOnHover: true,

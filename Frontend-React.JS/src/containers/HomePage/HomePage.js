@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import HomeHeader from './HomeHeader';
 import Specialty from './Section/Specialty';
 import MedicalFacility from './Section/MedicalFacility';
@@ -20,12 +19,12 @@ class HomePage extends Component {
             infinite: false,
             speed: 500,
             slidesToShow: 4,
-            slidesToSroll: 1,
+            slidesToScroll: 1,
 
         };
         return (
             <div>
-                <HomeHeader isShowBanner={true} />
+                <HomeHeader isShowBanner={true}/>
                 <Specialty
                     settings={settings}
                 />
@@ -38,8 +37,8 @@ class HomePage extends Component {
                 <HandBook
                     settings={settings}
                 />
-                <About />
-                <HomeFooter />
+                <About/>
+                <HomeFooter/>
             </div>
         );
     }
@@ -53,8 +52,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-    };
+    return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

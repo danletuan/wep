@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import './UserManage.scss';
-import { getAllUsers, createNewUserService, deleteUserService, editUserService } from '../../services/userService';
-import { bind } from 'lodash';
+import {createNewUserService, deleteUserService, editUserService, getAllUsers} from '../../services/userService';
 import ModalUser from './ModalUser';
-import { emitter } from '../../utils/emitter';
+import {emitter} from '../../utils/emitter';
 import ModalEditUser from './ModalEditUser';
+
 class UserManage extends Component {
 
     constructor(props) {
@@ -14,7 +13,7 @@ class UserManage extends Component {
         this.state = {
             arrUsers: [],
             isOpenModalUser: false,
-            isOpenModaEditlUser: false,
+            isOpenModalEditUser: false,
             userEdit: {}
         }
     }
@@ -23,6 +22,7 @@ class UserManage extends Component {
         await this.getAllUsersFromReact();
 
     }
+
     getAllUsersFromReact = async () => {
         let response = await getAllUsers('ALL');
         if (response && response.errCode === 0) {
@@ -38,26 +38,25 @@ class UserManage extends Component {
         })
     }
 
-    tggleUserModal = () => {
+    toggleUserModal = () => {
         this.setState({
             isOpenModalUser: !this.state.isOpenModalUser,
         })
 
     }
-    tggleUserEditModal = () => {
+    toggleUserEditModal = () => {
         this.setState({
-            isOpenModaEditlUser: !this.state.isOpenModaEditlUser,
+            isOpenModalEditUser: !this.state.isOpenModalEditlUser,
         })
 
     }
 
     createNewUser = async (data) => {
         try {
-            let reponse = await createNewUserService(data);
-            if (reponse && reponse.errCode !== 0) {
-                alert(reponse.errMessage)
-            }
-            else {
+            let response = await createNewUserService(data);
+            if (response && response.errCode !== 0) {
+                alert(response.errMessage)
+            } else {
                 await this.getAllUsersFromReact();
                 this.setState({
                     isOpenModalUser: false
@@ -75,8 +74,7 @@ class UserManage extends Component {
             let res = await deleteUserService(user.id);
             if (res && res.errCode === 0) {
                 await this.getAllUsersFromReact();
-            }
-            else {
+            } else {
                 alert(res.errMessage)
             }
         } catch (e) {
@@ -85,23 +83,22 @@ class UserManage extends Component {
         }
     }
 
-    hanldeEdtUser = (user) => {
+    handleEditUser = (user) => {
         this.setState({
-            isOpenModaEditlUser: true,
+            isOpenModalEditUser: true,
             userEdit: user
         })
     }
 
-    doEditUserr = async (user) => {
+    doEditUser = async (user) => {
         try {
             let res = await editUserService(user);
             if (res && res.errCode === 0) {
                 this.setState({
-                    isOpenModaEditlUser: false
+                    isOpenModalEditUser: false
                 })
                 await this.getAllUsersFromReact();
-            }
-            else {
+            } else {
                 alert(res.errCode)
             }
         } catch (e) {
@@ -118,16 +115,16 @@ class UserManage extends Component {
             <div className="users-container">
                 <ModalUser
                     isOpen={this.state.isOpenModalUser}
-                    tggleFromParent={this.tggleUserModal}
+                    tggleFromParent={this.toggleUserModal}
                     createNewUser={this.createNewUser}
                 />
 
-                {this.state.isOpenModaEditlUser &&
+                {this.state.isOpenModalEditUser &&
                     <ModalEditUser
-                        isOpen={this.state.isOpenModaEditlUser}
-                        tggleFromParent={this.tggleUserEditModal}
+                        isOpen={this.state.isOpenModalEditUser}
+                        tggleFromParent={this.toggleUserEditModal}
                         currentUser={this.state.userEdit}
-                        editUser={this.doEditUserr}
+                        editUser={this.doEditUser}
                     />
                 }
                 <div className='title text-center'>Manage users</div>
@@ -135,33 +132,36 @@ class UserManage extends Component {
                     <button
                         className='btn btn-primary px-3'
                         onClick={() => this.handleAddNewUser()}
-                    ><i className='fas fa-plus'></i>Add new user</button>
+                    ><i className='fas fa-plus'></i>Add new user
+                    </button>
                 </div>
                 <div className='users-table mt-3 mx-1'>
                     <table id='customers'>
                         <tbody>
-                            <tr>
-                                <th>Email</th>
-                                <th>First name</th>
-                                <th>Last name</th>
-                                <th>Address</th>
-                                <th>Actions</th>
-                            </tr>
-                            {arrUsers && arrUsers.map((item, index) => {
-                                console.log('check map', item, index)
-                                return (
-                                    <tr key={index}>
-                                        <td>{item.email}</td>
-                                        <td>{item.firstName}</td>
-                                        <td>{item.lastName}</td>
-                                        <td>{item.address}</td>
-                                        <td>
-                                            <button className='btn-edit' onClick={() => this.hanldeEdtUser(item)}><i className='fas fa-pencil-alt'></i></button>
-                                            <button className='btn-delete' onClick={() => this.handleDeleteUser(item)}><i className='fas fa-trash'></i></button>
-                                        </td>
-                                    </tr>
-                                );
-                            })}
+                        <tr>
+                            <th>Email</th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Address</th>
+                            <th>Actions</th>
+                        </tr>
+                        {arrUsers && arrUsers.map((item, index) => {
+                            console.log('check map', item, index)
+                            return (
+                                <tr key={index}>
+                                    <td>{item.email}</td>
+                                    <td>{item.firstName}</td>
+                                    <td>{item.lastName}</td>
+                                    <td>{item.address}</td>
+                                    <td>
+                                        <button className='btn-edit' onClick={() => this.handleEditUser(item)}><i
+                                            className='fas fa-pencil-alt'></i></button>
+                                        <button className='btn-delete' onClick={() => this.handleDeleteUser(item)}><i
+                                            className='fas fa-trash'></i></button>
+                                    </td>
+                                </tr>
+                            );
+                        })}
                         </tbody>
                     </table>
                 </div>
@@ -171,13 +171,11 @@ class UserManage extends Component {
 }
 
 const mapStateToProps = state => {
-    return {
-    };
+    return {};
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-    };
+    return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserManage);

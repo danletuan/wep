@@ -7,7 +7,7 @@ let handleLogin = async (req, res) => {
     if (!email || !password) {
         return res.status(500).json({
             errCode: 1,
-            message: "Missing inputs paramter!"
+            message: "Missing inputs parameter!"
         })
     }
 
@@ -54,7 +54,7 @@ let handleDeleteUser = async (req, res) => {
     if (!req.body.id) {
         return res.status(200).json({
             errCode: 1,
-            message: "Missing reqired parameters!"
+            message: "Missing required parameters!"
         })
     }
     let message = await userService.deleteUser(req.body.id);

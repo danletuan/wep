@@ -1,6 +1,6 @@
 import React from 'react';
 import Autosuggest from 'react-autosuggest';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import _ from 'lodash';
 
 import "./InputSuggest.scss";
@@ -34,19 +34,18 @@ class InputSuggestion extends React.Component {
         const inputValue = textInput.trim().toLowerCase();
 
         if (!this.props.inputsWithIndex) {
-            return [{ textInput: textInput }];
-        };
+            return [{textInput: textInput}];
+        }
+        ;
         let inputsWithIndex = this.props.inputsWithIndex;
         let keyArr = Object.keys(inputsWithIndex).filter(
             textInput => {
                 return textInput.toLowerCase().indexOf(inputValue) >= 0
             }
         );
-        var suggestArr = keyArr.map(function (key) {
+        return keyArr.map(function (key) {
             return inputsWithIndex[key];
         });
-
-        return suggestArr;
     };
 
     storeInputReference = autosuggest => {
@@ -63,7 +62,7 @@ class InputSuggestion extends React.Component {
         this.props.onSelected(suggestion);
         return suggestion.displayName;
     }
-    
+
     renderSuggestion = suggestion => {
         return (
             <div className="suggest-item">
@@ -72,17 +71,16 @@ class InputSuggestion extends React.Component {
         );
     };
 
-    onSuggestionsFetchRequested = ({ value }) => {
+    onSuggestionsFetchRequested = ({value}) => {
         this.setState({
             suggestions: this.sortSuggestions(this.getSuggestions(value), value)
         });
     };
 
     sortSuggestions(suggestions, value) {
-        var results =  _.sortBy(suggestions, (element) => {
+        return _.sortBy(suggestions, (element) => {
             return element.displayName
-        })
-        return results;
+        });
     }
 
     onSuggestionsClearRequested = () => {
@@ -98,7 +96,7 @@ class InputSuggestion extends React.Component {
         });
     };
 
-    handleChangeInput = (event, { newValue }) => {
+    handleChangeInput = (event, {newValue}) => {
         this.setState({
             textInput: newValue || ''
         });
@@ -108,7 +106,7 @@ class InputSuggestion extends React.Component {
         this.setState({
             textInput: ''
         });
-        this.onSuggestionsFetchRequested({ value: '' });
+        this.onSuggestionsFetchRequested({value: ''});
     }
 
     handleBlurInput() {
@@ -118,7 +116,7 @@ class InputSuggestion extends React.Component {
     }
 
     render() {
-        const { textInput, suggestions } = this.state;
+        const {textInput, suggestions} = this.state;
         const inputProps = {
             value: textInput,
             className: "custom-form-control",
@@ -148,8 +146,7 @@ class InputSuggestion extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return {
-    };
+    return {};
 };
 
 export default connect(mapStateToProps, null)(InputSuggestion);

@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { emitter } from '../../utils/emitter';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Button, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+import {emitter} from '../../utils/emitter';
 
 
 class ModalUser extends Component {
@@ -29,6 +28,7 @@ class ModalUser extends Component {
             })
         })
     }
+
     componentDidMount() {
         // Add any necessary code for component mount
     }
@@ -37,7 +37,7 @@ class ModalUser extends Component {
         this.props.tggleFromParent();
     };
     handleOnChageInput = (event, id) => {
-        let copyState = { ...this.state };
+        let copyState = {...this.state};
         copyState[id] = event.target.value;
         this.setState({
             ...copyState
@@ -80,7 +80,9 @@ class ModalUser extends Component {
                             <label>Email</label>
                             <input
                                 type='text'
-                                onChange={(event) => { this.handleOnChageInput(event, "email") }}
+                                onChange={(event) => {
+                                    this.handleOnChageInput(event, "email")
+                                }}
                                 value={this.state.email}
                             ></input>
                         </div>
@@ -88,7 +90,9 @@ class ModalUser extends Component {
                             <label>Password</label>
                             <input
                                 type='password'
-                                onChange={(event) => { this.handleOnChageInput(event, "password") }}
+                                onChange={(event) => {
+                                    this.handleOnChageInput(event, "password")
+                                }}
                                 value={this.state.password}
                             ></input>
                         </div>
@@ -96,7 +100,9 @@ class ModalUser extends Component {
                             <label>First name</label>
                             <input
                                 type='text'
-                                onChange={(event) => { this.handleOnChageInput(event, "firstName") }}
+                                onChange={(event) => {
+                                    this.handleOnChageInput(event, "firstName")
+                                }}
                                 value={this.state.firstName}
                             ></input>
                         </div>
@@ -104,7 +110,9 @@ class ModalUser extends Component {
                             <label>Last name</label>
                             <input
                                 type='text'
-                                onChange={(event) => { this.handleOnChageInput(event, "lastName") }}
+                                onChange={(event) => {
+                                    this.handleOnChageInput(event, "lastName")
+                                }}
                                 value={this.state.lastName}
                             ></input>
                         </div>
@@ -112,7 +120,9 @@ class ModalUser extends Component {
                             <label>Address</label>
                             <input
                                 type='text'
-                                onChange={(event) => { this.handleOnChageInput(event, "address") }}
+                                onChange={(event) => {
+                                    this.handleOnChageInput(event, "address")
+                                }}
                                 value={this.state.address}
                             ></input>
                         </div>
@@ -123,7 +133,9 @@ class ModalUser extends Component {
                     <Button
                         color="primary"
                         className='px-3'
-                        onClick={() => { this.handleAddNewUser() }}>
+                        onClick={() => {
+                            this.handleAddNewUser()
+                        }}>
                         Add
                     </Button>
                     <Button color="secondary" className='px-3' onClick={this.toggle}>

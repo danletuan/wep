@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Flatpickr from 'react-flatpickr';
 import moment from 'moment';
 
-import { KeyCodeUtils } from "../../utils";
+import {KeyCodeUtils} from "../../utils";
 import './DatePicker.scss';
 
 // const CustomInput = ({ value, defaultValue, inputRef, onInputChange, onInputBlur, ...props }) => {
@@ -15,6 +15,11 @@ import './DatePicker.scss';
 class DatePicker extends Component {
 
     flatpickrNode = null;
+    //dat.nt : Auto Fill cho dạng ngăn cách và format cụ thể (seperator có thể dc thay thế)
+    SEPARATOR = "/";
+    DATE_FORMAT_AUTO_FILL = "d/m/Y"; // Format không thay đổi
+    // dat.nt : Format ngày hiển thị
+    DISPLAY_FORMAT = "d/m/Y";
 
     nodeRef = element => {
         this.flatpickr = element && element.flatpickr;
@@ -29,7 +34,7 @@ class DatePicker extends Component {
         const keyCode = event.which || event.keyCode;
         if (keyCode === KeyCodeUtils.ENTER) {
             event.preventDefault();
-            const { onChange } = this.props;
+            const {onChange} = this.props;
             const value = event.target.value;
 
             // Take the blur event and process the string value
@@ -46,7 +51,7 @@ class DatePicker extends Component {
     }
 
     handleBlur = (event) => {
-        const { onChange } = this.props;
+        const {onChange} = this.props;
         const value = event.target.value;
 
         // Take the blur event and process the string value
@@ -54,25 +59,6 @@ class DatePicker extends Component {
         const valueMoment = moment(value, 'DD/MM/YYYY');
         onChange([valueMoment.toDate(), valueMoment.toDate()]);
     };
-
-    onOpen = () => {
-        if (this.flatpickrNode) {
-            this.flatpickrNode.blur();
-        }
-    }
-
-    close() {
-        this.flatpickr.close();
-    }
-
-    checkDateValue = (str, max) => {
-        if (str.charAt(0) !== '0' || str === '00') {
-            var num = parseInt(str);
-            if (isNaN(num) || num <= 0 || num > max) num = 1;
-            str = num > parseInt(max.toString().charAt(0)) && num.toString().length === 1 ? '0' + num : num.toString();
-        };
-        return str;
-    }
 
     // autoFormatonBlur = (value) => {
     //     var input = value;
@@ -99,46 +85,58 @@ class DatePicker extends Component {
     //     return output;
     // }
 
-    autoFormatOnChange = (value, seperator) => {
-        var input = value;
+    onOpen = () => {
+        if (this.flatpickrNode) {
+            this.flatpickrNode.blur();
+        }
+    }
 
-        let regexForDeleting = new RegExp(`\\D\\${seperator}$`);
+    close() {
+        this.flatpickr.close();
+    }
+
+    checkDateValue = (str, max) => {
+        if (str.charAt(0) !== '0' || str === '00') {
+            let num = parseInt(str);
+            if (isNaN(num) || num <= 0 || num > max) num = 1;
+            str = num > parseInt(max.toString().charAt(0)) && num.toString().length === 1 ? '0' + num : num.toString();
+        }
+
+        return str;
+    }
+
+    autoFormatOnChange = (value, separator) => {
+        let input = value;
+
+        let regexForDeleting = new RegExp(`\\D\\${separator}$`);
 
         //if (/\D\/$/.test(input)) input = input.substr(0, input.length - 3); // dat.nt: Xóa thêm 1 ký tự nếu xóa dấu cách sau / (VD: 12 / 12 /=> 12 / 1)
 
         if (regexForDeleting.test(input)) input = input.substr(0, input.length - 3);
 
-        var values = input.split(seperator).map(function (v) {
+        const values = input.split(separator).map(function (v) {
             return v.replace(/\D/g, '')
         });
 
         if (values[0]) values[0] = this.checkDateValue(values[0], 31);
         if (values[1]) values[1] = this.checkDateValue(values[1], 12);
-        var output = values.map(function (v, i) {
-            return v.length === 2 && i < 2 ? v + ' ' + seperator + ' ' : v;
+        const output = values.map(function (v, i) {
+            return v.length === 2 && i < 2 ? v + ' ' + separator + ' ' : v;
         });
         return output.join('').substr(0, 14);
     }
 
     onInputChange = (e) => {
         if (this.DISPLAY_FORMAT === this.DATE_FORMAT_AUTO_FILL) {
-            let converted = this.autoFormatOnChange(e.target.value, this.SEPERATOR);
-            e.target.value = converted;
+            e.target.value = this.autoFormatOnChange(e.target.value, this.SEPARATOR);
         }
     }
 
     onInputBlur = (e) => {
     }
 
-    //dat.nt : Auto Fill cho dạng ngăn cách và format cụ thể (seperator có thể dc thay thế)
-    SEPERATOR = "/";
-    DATE_FORMAT_AUTO_FILL = "d/m/Y"; // Format không thay đổi
-
-    // dat.nt : Format ngày hiển thị
-    DISPLAY_FORMAT = "d/m/Y";
-
     render() {
-        const { value, onChange, minDate, onClose, ...otherProps } = this.props;
+        const {value, onChange, minDate, onClose, ...otherProps} = this.props;
         const options = {
             dateFormat: this.DISPLAY_FORMAT,
             allowInput: true,

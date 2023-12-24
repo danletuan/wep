@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from 'react-redux';
-import { IntlProvider } from "react-intl";
+import React, {Component} from "react";
+import {connect} from 'react-redux';
+import {IntlProvider} from "react-intl";
 
 import '@formatjs/intl-pluralrules/polyfill';
 import '@formatjs/intl-pluralrules/locale-data/en';
@@ -10,14 +10,14 @@ import '@formatjs/intl-relativetimeformat/polyfill';
 import '@formatjs/intl-relativetimeformat/locale-data/en';
 import '@formatjs/intl-relativetimeformat/locale-data/vi';
 
-import { LanguageUtils } from '../utils'
+import {LanguageUtils} from '../utils'
 
 const messages = LanguageUtils.getFlattenedMessages();
 
 class IntlProviderWrapper extends Component {
 
     render() {
-        const { children, language } = this.props;
+        const {children, language} = this.props;
         return (
             <IntlProvider
                 locale={language}

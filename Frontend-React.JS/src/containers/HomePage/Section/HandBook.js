@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
-import { FormattedMessage } from 'react-intl';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 import Slider from 'react-slick';
 
@@ -59,8 +57,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-    };
+    return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Handbook);

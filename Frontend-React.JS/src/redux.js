@@ -1,11 +1,11 @@
-import { logger } from "redux-logger";
+import {logger} from "redux-logger";
 import thunkMiddleware from "redux-thunk";
-import { routerMiddleware } from 'connected-react-router';
-import { createBrowserHistory } from 'history';
+import {routerMiddleware} from 'connected-react-router';
+import {createBrowserHistory} from 'history';
 
-import { createStore, applyMiddleware, compose } from 'redux';
-import { createStateSyncMiddleware } from 'redux-state-sync';
-import { persistStore } from 'redux-persist';
+import {applyMiddleware, compose, createStore} from 'redux';
+import {createStateSyncMiddleware} from 'redux-state-sync';
+import {persistStore} from 'redux-persist';
 
 import createRootReducer from './store/reducers/rootReducer';
 import actionTypes from './store/actions/actionTypes';
@@ -17,7 +17,7 @@ let isDevelopment = environment === "development";
 isDevelopment = false;
 
 
-export const history = createBrowserHistory({ basename: process.env.REACT_APP_ROUTER_BASE_NAME });
+export const history = createBrowserHistory({basename: process.env.REACT_APP_ROUTER_BASE_NAME});
 
 const reduxStateSyncConfig = {
     whitelist: [

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from "react-redux";
+import React, {Component} from 'react';
+import {connect} from "react-redux";
 import HomeHeader from '../../HomePage/HomeHeader';
 import './DetailDoctor.scss';
-import { getDetailInforDoctor } from '../../../services/userService';
-import { LANGUAGES } from '../../../utils';
+import {getDetailInforDoctor} from '../../../services/userService';
+import {LANGUAGES} from '../../../utils';
 import DoctorSchedule from './DoctorSchedule';
 import DoctorExtraInfor from './DoctorExtraInfor';
 
@@ -41,8 +41,8 @@ class DetailDoctor extends Component {
 
     render() {
 
-        let { language } = this.props
-        let { detailDoctor } = this.state;
+        let {language} = this.props
+        let {detailDoctor} = this.state;
         let nameEn = '', nameVi = ''
         if (detailDoctor && detailDoctor.positionData) {
             nameVi = `${detailDoctor.positionData.valueVi},${detailDoctor.lastName} ${detailDoctor.firstName}`
@@ -56,7 +56,7 @@ class DetailDoctor extends Component {
                 <div className='doctor-detail-container'>
                     <div className='intro-doctor'>
                         <div className='content-left'
-                            style={{ backgroundImage: `url(${detailDoctor && detailDoctor.image ? detailDoctor.image : ''})` }}>
+                             style={{backgroundImage: `url(${detailDoctor && detailDoctor.image ? detailDoctor.image : ''})`}}>
 
                         </div>
                         <div className='content-right'>
@@ -87,7 +87,7 @@ class DetailDoctor extends Component {
                     <div className='detail-infor-doctor'>
                         {detailDoctor && detailDoctor.MarkDown && detailDoctor.MarkDown.contentHTML
                             &&
-                            <div dangerouslySetInnerHTML={{ __html: detailDoctor.MarkDown.contentHTML }}>
+                            <div dangerouslySetInnerHTML={{__html: detailDoctor.MarkDown.contentHTML}}>
 
                             </div>
                         }
@@ -109,8 +109,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-    };
+    return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailDoctor);

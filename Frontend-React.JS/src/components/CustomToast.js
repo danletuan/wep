@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { FormattedMessage, FormattedTime } from 'react-intl';
+import React, {Component, Fragment} from 'react';
+import {FormattedMessage, FormattedTime} from 'react-intl';
 
 import CustomScrollBar from '../components/CustomScrollbars';
 
@@ -8,18 +8,19 @@ import './CustomToast.scss';
 class CustomToast extends Component {
 
     render() {
-        const { titleId, message, messageId, time } = this.props;
+        const {titleId, message, messageId, time} = this.props;
         return (
             <Fragment>
                 <div className="custom-toast">
                     <div className="toast-title">
                         {time && (
                             <span className="date">
-                                <FormattedTime hour='numeric' minute='numeric' second='numeric' hour12={true} value={time} />
+                                <FormattedTime hour='numeric' minute='numeric' second='numeric' hour12={true}
+                                               value={time}/>
                             </span>
                         )}
-                        <i className="fa fa-fw fa-exclamation-triangle" />
-                        <FormattedMessage id={titleId} />
+                        <i className="fa fa-fw fa-exclamation-triangle"/>
+                        <FormattedMessage id={titleId}/>
                     </div>
                     {
                         (message && typeof message === 'object') ?
@@ -35,7 +36,7 @@ class CustomToast extends Component {
                                 }
                             </CustomScrollBar> :
                             <div className="toast-content">
-                                {message ? message : (messageId ? (<FormattedMessage id={messageId} />) : null)}
+                                {message ? message : (messageId ? (<FormattedMessage id={messageId}/>) : null)}
                             </div>
                     }
                 </div>
@@ -49,7 +50,7 @@ export class CustomToastCloseButton extends Component {
     render() {
         return (
             <button type="button" className="toast-close" onClick={this.props.closeToast}>
-                <i className="fa fa-fw fa-times-circle" />
+                <i className="fa fa-fw fa-times-circle"/>
             </button>
         );
     }

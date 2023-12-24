@@ -19,8 +19,8 @@ let getCRUD = (req, res) => {
     return res.render('test/crud.ejs');
 }
 let postCRUD = async (req, res) => {
-    let mesage = await CRUDService.createNewUser(req.body)
-    console.log(mesage)
+    let message = await CRUDService.createNewUser(req.body)
+    console.log(message)
     return res.send('Dan dep trai vl');
 }
 let displayGetCRUD = async (req, res) => {
