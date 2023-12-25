@@ -1,5 +1,4 @@
 const doctorService = require("../services/doctorService");
-import patientService from '../services/patientService'
 let postBookAppointment = async (req, res) => {
     try {
         let infor = await doctorService.postBookAppointment(req.body);

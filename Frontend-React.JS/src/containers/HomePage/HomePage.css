@@ -12,7 +12,7 @@
 
 .slick-prev:before,
 .slick-next:before {
-  font-family: FontAwesome !important;
+  font-family: FontAwesome, serif !important;
   color: red !important;
 }
 
@@ -51,10 +51,7 @@
   background-size: cover;
   background-color: #eee;
 }
-.section-share .section-body .section-customize .bg-image.section-specialty {
-  background-image: url("../../assets/images/co-xuong-khop.jpg");
-}
-.section-share .section-body .section-customize .bg-image.section-mediacal-facility {
+.section-share .section-body .section-customize .bg-image.section-medical-facility {
   background-image: url("../../assets/images/benh-vien-thu-cuc.jpg");
 }
 .section-share .section-body .section-customize .bg-image.section-outstanding-doctor {

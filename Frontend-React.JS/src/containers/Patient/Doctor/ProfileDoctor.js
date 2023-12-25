@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import './ProfileDoctor.scss'
+import {FormattedMessage} from 'react-intl'
 import {getProfileDoctorById} from "../../../services/userService";
 import {LANGUAGES} from "../../../utils";
 

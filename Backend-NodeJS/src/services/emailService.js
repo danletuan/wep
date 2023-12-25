@@ -16,7 +16,7 @@ let sendSimpleEmail = async (dataSend) => {
     // send mail with a defined transport object
     let info = await transporter.sendMail({
         from: '<letuandan@gmail.com>',
-        to: dataSend.reciverEmail,
+        to: dataSend.receiverEmail,
         subject: 'Thông tin đặt lịch khám bệnh',
         html: getBodyHTMLEmail(dataSend)
     })

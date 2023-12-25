@@ -1,6 +1,5 @@
 import db from '../models/index'
 import emailService from "./emailService";
-import {resolve} from "@babel/core/lib/vendor/import-meta-resolve";
 
 require('dotenv').config()
 
@@ -19,7 +18,7 @@ let postBookAppointment = (data) => {
             } else {
                 let token = uuidv4()
                 await emailService.sendSimpleEmail({
-                    reciverEmail: data.email,
+                    receiverEmail: data.email,
                     patientName: data.fullName,
                     time: data.timeString,
                     doctorName: data.doctorName,
