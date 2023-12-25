@@ -61,6 +61,67 @@ let sendSimpleEmail = async (dataSend) => {
     }
 }
 
+let getBodyHTMLEmailRemedy = (dataSend) => {
+    let result = ''
+    if (dataSend.language === 'vi') {
+        result =
+            `
+             <h3>Xin chào ${dataSend.patientName}!</h3>
+             <p>Bạn nhận được email này vì đã đặt lịch khám bệnh online trên web</p>
+             <p>Thông tin đơn thuốc / hoá đơn được gửi trong file đính kèm.</p>
+             
+             <div>Xin chân thành cảm ơn!</div>
+            `
+    }
+    if (dataSend.language === 'en') {
+        result =
+            `
+             <h3>Dear ${dataSend.patientName}!</h3>
+             <p>You received this email because you booked an online medical appointment on web</p>
+             <p>Thông tin đơn thuốc / hoá đơn được gửi trong file đính kèm.</p>
+             
+             <div>Thanks!</div>
+            `
+    }
+}
+
+let sendAttachment = async (dataSend) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            // create a reusable transporter object using the default SMTP transport
+            let transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 587,
+                secure: false, // true for 465, false for other ports
+                auth: {
+                    user: process.env.EMAIL_APP,
+                    pass: process.env.EMAIL_APP_PASSWORD
+                }
+            })
+
+            // send mail with a defined transport object
+            let infor = await transporter.sendMail({
+                from: "letuandan@gmail.com",
+                to: dataSend.email,
+                subject: "Kết quả khám bệnh",
+                attachments: [
+                    {
+                        // encoded string as an attachment
+                        filename: `remedy-${dataSend.patientId}-${new Date().getTime()}.png`,
+                        content: dataSend.imageBase64.split('base64,')[1],
+                        encoding: 'base64'
+                    }
+                ]
+            })
+            resolve(true)
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
 module.exports = {
-    sendSimpleEmail: sendSimpleEmail
+    sendSimpleEmail: sendSimpleEmail,
+    sendAttachment: sendAttachment,
+    getBodyHTMLEmailRemedy: getBodyHTMLEmailRemedy
 }

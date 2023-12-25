@@ -9,7 +9,7 @@ import userIcon from '../../src/assets/images/user.svg';
 import passIcon from '../../src/assets/images/pass.svg';
 import './Login.scss';
 import {FormattedMessage} from 'react-intl';
-import {adminService} from '../../services/adminService';
+import adminService from "../services/adminService";
 
 
 class Login extends Component {
@@ -55,7 +55,7 @@ class Login extends Component {
             username: 'admin',
             password: '123456'
         }
-        //sucess
+        // success
         let adminInfo = {
             "tlid": "0",
             "tlfullname": "Administrator",

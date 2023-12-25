@@ -1,0 +1,49 @@
+.detail-clinic-container .description-clinic {
+  background-color: white !important;
+  padding: 10px;
+  margin: 15px 0;
+}
+.detail-clinic-container .description-clinic h1, .detail-clinic-container .description-clinic h2, .detail-clinic-container .description-clinic h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.detail-clinic-container .detail-clinic-body {
+  padding: 0 100px;
+  background: #eee;
+  display: flex;
+  flex-direction: column;
+}
+.detail-clinic-container .each-doctor {
+  display: flex;
+  width: 100%;
+  min-height: 300px;
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.2784313725);
+  border-radius: 8px;
+}
+.detail-clinic-container .each-doctor .dt-content-left {
+  width: 50%;
+  border-right: 1px solid #ddd;
+}
+.detail-clinic-container .each-doctor .dt-content-left .profile-doctor-container .down {
+  padding: 5px;
+}
+.detail-clinic-container .each-doctor .dt-content-right {
+  width: 50%;
+  padding: 10px;
+}
+.detail-clinic-container .each-doctor .dt-content-right .doctor-schedule .doctor-schedule-container {
+  border-right: unset !important;
+}
+.detail-clinic-container .each-doctor .dt-content-right .doctor-extra-infor {
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.detail-clinic-container .each-doctor .dt-content-right .doctor-extra-infor .doctor-extra-infor-container {
+  padding-left: 0 !important;
+}
+
+/*# sourceMappingURL=DetailClinic.css.map */

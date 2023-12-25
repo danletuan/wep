@@ -1,11 +1,12 @@
 import bcrypt from 'bcryptjs';
 import db from "../models/index";
+
 const salt = bcrypt.genSaltSync(10);
 
 let hasUserPassWord = (password) => {
     return new Promise(async (resolve, reject) => {
         try {
-            var hashPassWord = await bcrypt.hashSync(password, salt);
+            const hashPassWord = await bcrypt.hashSync(password, salt);
             resolve(hashPassWord);
         } catch (e) {
             reject(e)
@@ -20,7 +21,7 @@ let handleUserLogin = (email, password) => {
             let isExist = await checkUserEamil(email);
             if (isExist) {
                 let user = await db.User.findOne({
-                    attributes: ['email', 'roleId', 'password', 'firstName', 'lastName'],
+                    attributes: ['id', 'email', 'roleId', 'password', 'firstName', 'lastName'],
                     where: { email: email },
                     raw: true
 
@@ -60,7 +61,7 @@ let handleUserLogin = (email, password) => {
     })
 }
 
-let checkUserEamil = (userEmail) => {
+let checkUserEmail = (userEmail) => {
     return new Promise(async (resolve, reject) => {
         try {
             let user = await db.User.findOne({
@@ -113,11 +114,11 @@ let getAllUser = (userId) => {
 let createNewUser = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let check = await checkUserEamil(data.email);
+            let check = await checkUserEmail(data.email);
             if (check === true) {
                 resolve({
                     errCode: 1,
-                    errMessage: 'Your email is already used,Plz try another email'
+                    errMessage: 'Your email is already used, Plz try another email'
                 })
             }
             else {

@@ -14,7 +14,7 @@
   "banner": {
     "title1": "MEDICAL PLATFORM",
     "title2": "COMPREHENSIVE HEALTH CARE",
-    "child1": "Speialized examination",
+    "child1": "Specialized examination",
     "child2": "Remote examination",
     "child3": "General examination",
     "child4": "Medical test",
@@ -30,13 +30,14 @@
       "crud-redux": "CRUD Redux",
       "clinic": "Clinics",
       "manage-clinic": "Manage clinics",
-      "specialty": "Specialtys",
-      "manage-specialty": "Manage Specialtys",
+      "specialty": "Specialty",
+      "manage-specialty": "Manage Specialty",
       "handbook": "Handbook",
       "manage-handbook": "Manage Handbook"
     },
     "doctor": {
-      "manage-schedule": "Manage doctor's schedule"
+      "manage-schedule": "Manage doctor's schedule",
+      "manage-patient": "Manage doctor's patient"
     }
   },
   "manage-user": {
