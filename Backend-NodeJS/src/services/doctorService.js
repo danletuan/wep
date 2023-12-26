@@ -204,7 +204,7 @@ let bulkCreateSchedule = (data) => {
                 }
 
 
-                //get all exist data
+                // get all existed data
                 let exist = await db.Schedule.findAll({
                     where: { doctorId: data.doctorId, date: data.date },
                     attributes: ['timeType', 'date', 'doctorId', 'maxNumber'],
@@ -213,7 +213,7 @@ let bulkCreateSchedule = (data) => {
 
 
 
-                //compare differ
+                // compare differ
                 let toCreate = _.differenceWith(schedule, exist, (a, b) => {
                     return a.timeType === b.timeType && +a.date === +b.date;
                 });

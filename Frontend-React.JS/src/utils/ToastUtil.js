@@ -37,7 +37,7 @@ class ToastUtil {
 
     static errorApi(error, title = 'common.fail-to-load-data', autoCloseDelay = 3000) {
         if (axios.isCancel(error)) {
-            // Do nothing if request was cancelled
+            // Do nothing if the request was canceled
             return;
         }
         let message = null;

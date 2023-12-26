@@ -10,8 +10,8 @@ const isAlphaNumericChar = keycode => {
 };
 
 class InputSuggestion extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             textInput: '',
@@ -36,7 +36,7 @@ class InputSuggestion extends React.Component {
         if (!this.props.inputsWithIndex) {
             return [{textInput: textInput}];
         }
-        ;
+
         let inputsWithIndex = this.props.inputsWithIndex;
         let keyArr = Object.keys(inputsWithIndex).filter(
             textInput => {

@@ -66,29 +66,35 @@
         background-color: #eee;
 
         &.section-specialty {
-          //background-image: url('../../assets/images/co-xuong-khop.jpg');
+          background-image: url('../../assets/images/specialty/co-xuong-khop.jpeg');
         }
 
         &.section-medical-facility {
-          //background-image: url('../../assets/images/benh-vien-thu-cuc.jpg');
+          background-image: url('../../assets/images/hospital/anh-bia-bvk.jpeg');
         }
 
         &.section-outstanding-doctor {
-          // background-image: url('../../assets/images/anh-dai-dien-bs.jpg');
+          background-image: url('../../assets/images/doctor/bac-si-chuyen-khoa-i-ngo-duc-truong.jpeg');
           width: 120px;
           height: 120px;
           border-radius: 50%;
         }
 
-        &.section-handbook {
-          background-image: url('../../assets/images/handbook.jpg');
+        &.section-handbook1 {
+          background-image: url('../../assets/images/handbook/bac-si-da-lieu-4-pixabay.jpeg');
         }
-
-
+        &.section-handbook2 {
+          background-image: url('../../assets/images/handbook/bac-si-pham-hong-duc-chuyen-gia-invisalign.jpeg');
+        }
+        &.section-handbook3 {
+          background-image: url('../../assets/images/handbook/kham-da-lieu.jpeg');
+        }
+        &.section-handbook4 {
+          background-image: url('../../assets/images/handbook/kham-gan-mat-ha-noi.jpeg');
+        }
       }
     }
   }
-
 }
 
 

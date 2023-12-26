@@ -9,7 +9,7 @@ import {toast} from 'react-toastify'
 import {createNewSpecialty} from "../../../services/userService";
 
 
-const mdParser = new MardownIt(/* Markdown-it options */);
+const mdParser = new MarkdownIt(/* Markdown-it options */);
 class ManageClinic extends Component {
 
     constructor(props) {
@@ -23,7 +23,7 @@ class ManageClinic extends Component {
         }
     }
 
-    async ComponentDidMount() {
+    async componentDidMount() {
 
     }
 

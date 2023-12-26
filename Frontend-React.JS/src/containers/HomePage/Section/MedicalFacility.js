@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Slider from 'react-slick';
-import './MedicalFacility.scss';
+import '../HomePage.scss';
 import {getAllClinic} from '../../../services/userService'
-import {withRouter} from 'react-router'
+import {withRouter} from 'react-router-dom'
 
 class MedicalFacility extends Component {
 
     constructor(props) {
         super(props);
-        this.state({
+        this.state = {
             dataClinics: []
-        })
+        }
     }
 
     async componentDidMount() {
@@ -30,6 +30,7 @@ class MedicalFacility extends Component {
     }
 
     render() {
+        let {dataClinics} = this.state
         return (
             <div className='section-share section-medical-facility'>
                 <div className='section-container'>
@@ -39,6 +40,22 @@ class MedicalFacility extends Component {
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
+                            <div className='section-customize'>
+                                <div className='bg-image section-medical-facility'></div>
+                                {/*<div>Cẩm nang 1</div>*/}
+                            </div>
+                            <div className='section-customize'>
+                                <div className='bg-image section-medical-facility'></div>
+                                {/*<div>Cẩm nang 1</div>*/}
+                            </div>
+                            <div className='section-customize'>
+                                <div className='bg-image section-medical-facility'></div>
+                                {/*<div>Cẩm nang 1</div>*/}
+                            </div>
+                            <div className='section-customize'>
+                                <div className='bg-image section-medical-facility'></div>
+                                {/*<div>Cẩm nang 1</div>*/}
+                            </div>
                             {dataClinics && dataClinics.length > 0 &&
                                 dataClinics.map((item, index) => {
                                     return (

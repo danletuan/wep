@@ -7,7 +7,6 @@ class Comment extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
         }
     }
 
@@ -46,19 +45,19 @@ class Comment extends Component {
         }
     }
 
-    render() {
-        let {dataHref} = this.props
-        return (
-            <>
-                <dib className="fb-comments"
-                     data-href={dataHref}
-                     data-width={width ? width : ''}
-                     data-numposts={numPost ? numPost : 5}
-                >
-                </dib>
-            </>
-        )
-    }
+    // render() {
+    //     let {dataHref} = this.props
+    //     return (
+    //         <>
+    //             <dib className="fb-comments"
+    //                  data-href={dataHref}
+    //                  data-width={width ? width : ''}
+    //                  data-numposts={numPost ? numPost : 5}
+    //             >
+    //             </dib>
+    //         </>
+    //     )
+    // }
 }
 
 const mapStateToProps = state => {

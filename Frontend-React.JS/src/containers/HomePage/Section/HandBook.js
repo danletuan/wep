@@ -7,7 +7,7 @@ class Handbook extends Component {
 
     render() {
         return (
-            <div className='section-share section-handbook'>
+            <div className='section-share'>
                 <div className='section-container'>
                     <div className='section-header'>
                         <span className='title-section'>Cẩm nang</span>
@@ -16,28 +16,20 @@ class Handbook extends Component {
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
                             <div className='section-customize'>
-                                <div className='bg-image section-handbook'></div>
-                                <div>Cẩm nang 1</div>
+                                <div className='bg-image section-handbook1'></div>
+                                {/*<div>Cẩm nang 1</div>*/}
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image section-handbook'></div>
-                                <div>Cẩm nang 2</div>
+                                <div className='bg-image section-handbook2'></div>
+                                {/*<div>Cẩm nang 2</div>*/}
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image section-handbook'></div>
-                                <div>Cẩm nang 3</div>
+                                <div className='bg-image section-handbook3'></div>
+                                {/*<div>Cẩm nang 3</div>*/}
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image section-handbook'></div>
-                                <div>Cẩm nang 4</div>
-                            </div>
-                            <div className='section-customize'>
-                                <div className='bg-image section-handbook'></div>
-                                <div>Cẩm nang 5</div>
-                            </div>
-                            <div className='section-customize'>
-                                <div className='bg-image section-handbook'></div>
-                                <div>Cẩm nang 6</div>
+                                <div className='bg-image section-handbook4'></div>
+                                {/*<div>Cẩm nang 4</div>*/}
                             </div>
                         </Slider>
                     </div>

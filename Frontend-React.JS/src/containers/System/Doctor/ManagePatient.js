@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import './ManagePatient.scss'
 import DatePicker from "../../../components/Input/DatePicker";
-import {getAllPatientForDoctor} from "../../../services/userService";
+import {getAllPatientForDoctor, postSendRemedy} from "../../../services/userService";
 import moment from 'moment'
 import {LANGUAGES} from "../../../utils";
 import RemedyModal from './RemedyModal'
@@ -23,7 +23,7 @@ class ManagePatient extends Component {
     }
 
     async componentDidMount() {
-        this.getDataPatient()
+        await this.getDataPatient()
     }
 
     getDataPatient = async () => {
@@ -176,7 +176,7 @@ class ManagePatient extends Component {
                         isOpenModal={isOpenRemedyModal}
                         dataModal={dataModal}
                         closeRemedyModal={this.closeRemedyModal}
-                        sendRemedy={this.sendRemedy()}
+                        sendRemedy={this.sendRemedy}
                     />
                 </LoadingOverlay>
             </>

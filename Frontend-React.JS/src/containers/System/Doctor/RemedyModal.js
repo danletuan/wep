@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {CommonUtils} from "../../../utils";
-import {connect} from 'react-intl'
+import {connect} from 'react-redux'
 import './RemedyModal.scss'
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
+import {Button, Modal, ModalBody, ModalFooter} from 'reactstrap'
 
 class RemedyModal extends Component {
 
@@ -52,13 +52,13 @@ class RemedyModal extends Component {
     }
 
     render() {
-        let {isOpenModal, closeRemedyModal, dataModal, sendRemedy} = this.props
+        let {isOpenModal, closeRemedyModal} = this.props
         return (
             <Modal
                 isOpen={isOpenModal}
                 className={'booking-modal-container'}
                 size='md'
-                centered={}
+                centered
             >
                 <div className='modal-header'>
                     <h5 className="modal-title">Gửi hoá đơn khám bệnh thành công</h5>

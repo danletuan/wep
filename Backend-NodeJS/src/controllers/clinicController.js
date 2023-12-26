@@ -1,5 +1,4 @@
 import clinicService from '../services/clinicService'
-import specialtyService from "../services/specialtyService";
 
 let createClinic = async (req,res) => {
     try {
@@ -29,7 +28,7 @@ let getAllClinic = async (req, res) => {
 
 let getDetailClinicById = async (req, res) => {
     try {
-        let infor = await specialtyService.getDetailClinicById(req.query.id);
+        let infor = await clinicService.getDetailClinicById(req.query.id);
         return res.status(200).json(infor);
     } catch (e) {
         console.log(e)

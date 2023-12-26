@@ -1,13 +1,12 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl';
 import MarkdownIt from 'markdown-it'
 import MdEditor from 'react-markdown-editor-lite'
 import { CommonUtils } from "../../../utils"
 import { createNewSpecialty } from '../../../services/userService'
 import { toast } from 'react-toastify'
 
-const mdParser = new MardownIt(/* Markdown-it options */);
+const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 class ManageSpecialty extends Component {
 
@@ -21,7 +20,7 @@ class ManageSpecialty extends Component {
         }
     }
 
-    async ComponentDidMount() {
+    async componentDidMount() {
 
     }
 

@@ -176,7 +176,7 @@ class Navigator extends Component {
     //     };
     // };
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps, prevState, snapshot) {
         const {location} = this.props;
         const {location: prevLocation} = prevProps;
         if (location !== prevLocation) {

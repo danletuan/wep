@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './HomeHeader'
 import './HomeHeader.scss'
-import logo from '../../assets/images/logo.svg';
+import logo from '../../assets/images/logo.png';
 import {FormattedMessage} from 'react-intl';
 import {LANGUAGES} from '../../utils';
 import {changeLanguageApp} from '../../store/actions';
@@ -28,7 +28,7 @@ class HomeHeader extends Component {
                     <div className="home-header-content">
                         <div className='left-content'>
                             <i className='fas fa-bars'></i>
-                            <img className='header-logo' src={logo} onClick={() => this.returnToHome()} alt={}></img>
+                            <img className='header-logo' src={logo} onClick={() => this.returnToHome()} alt=''/>
                         </div>
                         <div className='center-content'>
                             <div className='child-content'>

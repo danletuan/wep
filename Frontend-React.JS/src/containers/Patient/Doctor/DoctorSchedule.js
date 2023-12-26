@@ -48,7 +48,6 @@ class DoctorSchedule extends Component {
             object.value = moment(new Date()).add(i, 'days').startOf('day').valueOf();
 
             allDays.push(object)
-
         }
         return allDays;
     }
@@ -65,8 +64,7 @@ class DoctorSchedule extends Component {
         }
 
         this.setState({
-            allDays: allDays,
-
+            allDays: allDays
         })
     }
 
@@ -147,7 +145,7 @@ class DoctorSchedule extends Component {
                                                 <button
                                                     key={index}
                                                     className={language === LANGUAGES.VI ? 'btn-vi' : 'btn-en'}
-                                                    onClick={() => handleClickScheduleTime(time)}>
+                                                    onClick={() => this.handleClickScheduleTime(item.timeTypeData)}>
                                                     {timeDisplay}
                                                 </button>
                                             )

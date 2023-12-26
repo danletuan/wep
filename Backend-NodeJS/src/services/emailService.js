@@ -1,9 +1,9 @@
 require('dotenv').config()
-import nodemailer from 'nodemailder'
+import nodemailer from 'nodemailer'
 
 let sendSimpleEmail = async (dataSend) => {
     // create reusable transporter object using default SMTP transport
-    let transporter = nodemailer.createTrasport({
+    let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 587,
         secure: false, // true for 465, false for other ports

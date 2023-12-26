@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Slider from 'react-slick';
+import '../HomePage.scss'
 import * as actions from '../../../store/actions';
 import {LANGUAGES} from '../../../utils';
 import {FormattedMessage} from 'react-intl';
-import {withRouter} from 'react-router';
+import {withRouter} from 'react-router-dom';
 
 class OutStandingDoctor extends Component {
 
@@ -36,9 +37,9 @@ class OutStandingDoctor extends Component {
     }
 
     render() {
-
         let arrDoctors = this.state.arrDoctors;
         let {language} = this.props;
+
         return (
             <div className='section-share section-outstanding-doctor'>
                 <div className='section-container'>
@@ -52,7 +53,22 @@ class OutStandingDoctor extends Component {
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
-
+                            <div className='section-customize'>
+                                <div className='bg-image section-outstanding-doctor'></div>
+                                {/*<div>Cẩm nang 1</div>*/}
+                            </div>
+                            <div className='section-customize'>
+                                <div className='bg-image section-outstanding-doctor'></div>
+                                {/*<div>Cẩm nang 1</div>*/}
+                            </div>
+                            <div className='section-customize'>
+                                <div className='bg-image section-outstanding-doctor'></div>
+                                {/*<div>Cẩm nang 1</div>*/}
+                            </div>
+                            <div className='section-customize'>
+                                <div className='bg-image section-outstanding-doctor'></div>
+                                {/*<div>Cẩm nang 1</div>*/}
+                            </div>
                             {arrDoctors && arrDoctors.length > 0
                                 && arrDoctors.map((item, index) => {
                                     let imageBase64 = '';
@@ -84,7 +100,6 @@ class OutStandingDoctor extends Component {
                             }
                         </Slider>
                     </div>
-
                 </div>
             </div>
         );

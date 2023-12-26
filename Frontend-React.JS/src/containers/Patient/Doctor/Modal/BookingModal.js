@@ -158,13 +158,13 @@ class BookingModal extends Component {
                     spinner
                     text='Loading...'
                 >
-                    <Modal isOpen={false} toggle={} className='booking-modal-container' size="lg" centered>
+                    <Modal isOpen={false} className='booking-modal-container' size="lg" centered>
                         <div className='booking-modal-content'>
                             <div className='booking-modal-header'>
                             <span className='left'>
                                 <FormattedMessage id='patient.booking-modal.title' />
                             </span>
-                                <span className='right' onClick={closeModalBooking}>
+                                <span className='right' onClick={this.closeModalBooking}>
                             <i className={'fas fa-times'}></i>
                         </span>
                             </div>
@@ -225,7 +225,7 @@ class BookingModal extends Component {
                                 </div>
                             </div>
                             <div className='footer'>
-                                <button className='btn-booking-confirm' onClick={closeModalBooking}>Xác nhận</button>
+                                <button className='btn-booking-confirm' onClick={this.closeModalBooking}>Xác nhận</button>
                                 <button className='btn-booking-cancel'>Cancel</button>
                             </div>
                         </div>
