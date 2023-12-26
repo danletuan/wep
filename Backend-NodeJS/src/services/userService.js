@@ -18,7 +18,7 @@ let handleUserLogin = (email, password) => {
     return new Promise(async (resolve, reject) => {
         try {
             let userData = {};
-            let isExist = await checkUserEamil(email);
+            let isExist = await checkUserEmail(email);
             if (isExist) {
                 let user = await db.User.findOne({
                     attributes: ['id', 'email', 'roleId', 'password', 'firstName', 'lastName'],

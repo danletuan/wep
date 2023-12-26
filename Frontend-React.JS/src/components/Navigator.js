@@ -182,7 +182,6 @@ class Navigator extends Component {
         if (location !== prevLocation) {
             this.checkActiveMenu();
         }
-        ;
     };
 
     render() {

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './DetailClinic.scss'
-import HomeHeader from "../HomePage/HomeHeader";
+import HomeHeader from "../../HomePage/HomeHeader";
 import DoctorSchedule from "../Doctor/DoctorSchedule";
 import DoctorExtraInfor from "../Doctor/DoctorExtraInfor";
 import ProfileDoctor from "../Doctor/ProfileDoctor";
-import { getAllDetailClinicById } from "../../services/userService";
+import { getAllDetailClinicById } from "../../../services/userService";
 import _ from 'lodash'
 
 class DetailClinic extends Component {
@@ -137,7 +137,7 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = () => {
     return {};
 };
 

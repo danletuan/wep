@@ -13,7 +13,7 @@ import {
 import {toast} from 'react-toastify';
 
 export const fetchGenderStart = () => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         try {
             dispatch({type: actionTypes.FETCH_GENDER_START})
             let res = await getAllCodeService('GENDER');
@@ -46,7 +46,7 @@ export const fetchRoleSuccess = (roleData) => ({
     data: roleData
 })
 export const fetchRoleFailed = () => ({
-    type: actionTypes.FETCH_ROLE_FAIDED
+    type: actionTypes.FETCH_ROLE_FAILDED
 })
 
 export const fetchPositionSuccess = (positionData) => ({
@@ -54,11 +54,11 @@ export const fetchPositionSuccess = (positionData) => ({
     data: positionData
 })
 export const fetchPositionFailed = () => ({
-    type: actionTypes.FETCH_POSITION_FAIDED
+    type: actionTypes.FETCH_POSITION_FAILDED
 })
 
 export const fetchPositionStart = () => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         try {
             dispatch({type: actionTypes.FETCH_GENDER_START})
             let res = await getAllCodeService("POSITION");
@@ -73,7 +73,7 @@ export const fetchPositionStart = () => {
     }
 }
 export const fetchRoleStart = () => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         try {
             dispatch({type: actionTypes.FETCH_GENDER_START})
             let res = await getAllCodeService("ROLE");
@@ -89,7 +89,7 @@ export const fetchRoleStart = () => {
 }
 
 export const createNewUser = (data) => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         try {
             let res = await createNewUserService(data);
             if (res && res.errCode === 0) {
@@ -116,7 +116,7 @@ export const saveUserFailed = () => ({
 })
 
 export const fetchAllUsersStart = () => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         try {
 
             let res = await getAllUsers("ALL");
@@ -145,7 +145,7 @@ export const fetchAllUsersFailed = (data) => ({
 })
 
 export const deleteAUser = (userId) => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         try {
             let res = await deleteUserService(userId);
             if (res && res.errCode === 0) {
@@ -173,7 +173,7 @@ export const deleteUserFailed = () => ({
 })
 
 export const editAUser = (data) => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         try {
             let res = await editUserService(data);
             if (res && res.errCode === 0) {
@@ -198,7 +198,7 @@ export const editUserFailed = () => ({
 })
 
 export const fetchTopDoctor = () => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         try {
             let res = await getTopDoctorHomeService('');
             if (res && res.errCode === 0) {
@@ -221,7 +221,7 @@ export const fetchTopDoctor = () => {
 }
 
 export const fetchAllDoctors = () => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         try {
             let res = await getAllDoctors();
             if (res && res.errCode === 0) {
@@ -244,7 +244,7 @@ export const fetchAllDoctors = () => {
 }
 
 export const saveDetailDoctor = (data) => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         try {
             let res = await saveDetailDoctorService(data);
             if (res && res.errCode === 0) {
@@ -271,7 +271,7 @@ export const saveDetailDoctor = (data) => {
 }
 
 export const fetchAllScheduleTime = () => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         try {
             let res = await getAllCodeService("TIME");
             if (res && res.errCode === 0) {
@@ -294,7 +294,7 @@ export const fetchAllScheduleTime = () => {
 }
 
 export const getRequiredDoctorInfor = () => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         try {
             dispatch({type: actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_START})
             let resPrice = await getAllCodeService('PRICE');

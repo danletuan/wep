@@ -12,7 +12,7 @@ let app = express();
 // Add headers before the routes are defined
 app.use(function (req, res, next) {
 
-    // Website you wish to allow to connect
+    // Website you wish to allow connecting
     res.setHeader('Access-Control-Allow-Origin', process.env.URL_REACT);
 
     // Request methods you wish to allow
@@ -22,10 +22,10 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
     // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
+    // to the API (e.g., in case you use sessions)
     res.setHeader('Access-Control-Allow-Credentials', true);
 
-    // Pass to next layer of middleware
+    // Pass to the next layer of middleware
     next();
 });
 

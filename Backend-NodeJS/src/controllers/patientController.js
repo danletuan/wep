@@ -1,7 +1,7 @@
-const doctorService = require("../services/doctorService");
+const patientService = require("../services/patientService");
 let postBookAppointment = async (req, res) => {
     try {
-        let infor = await doctorService.postBookAppointment(req.body);
+        let infor = await patientService.postBookAppointment(req.body);
         return res.status(200).json(infor);
     } catch (e) {
 
@@ -14,7 +14,7 @@ let postBookAppointment = async (req, res) => {
 
 let postVerifyBookAppointment = async (req, res) => {
     try {
-        let infor = await doctorService.postVerifyBookAppointment(req.body);
+        let infor = await patientService.postVerifyBookAppointment(req.body);
         return res.status(200).json(infor);
     } catch (e) {
         console.log(e)

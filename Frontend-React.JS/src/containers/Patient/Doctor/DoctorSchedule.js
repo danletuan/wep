@@ -3,9 +3,9 @@ import {connect} from "react-redux";
 import './DoctorSchedule.scss';
 import moment from 'moment';
 import {FormattedMessage} from 'react-intl';
-import {LANGUAGES} from '../../utils';
+import {LANGUAGES} from '../../../utils';
 import BookingModal from "./Modal/BookingModal";
-import {getScheduleDoctorByDate} from '../../services/userService';
+import {getScheduleDoctorByDate} from '../../../services/userService';
 
 class DoctorSchedule extends Component {
 
@@ -19,7 +19,7 @@ class DoctorSchedule extends Component {
         }
     }
 
-    capitallizeFirstLetter(string) {
+    capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
@@ -30,17 +30,15 @@ class DoctorSchedule extends Component {
             if (language === LANGUAGES.VI) {
                 if (i === 0) {
                     let ddMM = moment(new Date()).format('DD/MM');
-                    let today = `Hôm nay - ${ddMM}`
-                    object.label = today
+                    object.label = `Hôm nay - ${ddMM}`
                 } else {
                     let labelVi = moment(new Date()).add(i, 'days').format('dddd - DD/MM');
-                    object.label = this.capitallizeFirstLetter(labelVi)
+                    object.label = this.capitalizeFirstLetter(labelVi)
                 }
             } else {
                 if (i === 0) {
                     let ddMM = moment(new Date()).format('DD/MM');
-                    let today = `Today - ${ddMM}`
-                    object.label = today
+                    object.label = `Today - ${ddMM}`
                 } else {
                     object.label = moment(new Date()).add(i, 'days').locale('en').format('ddd - DD/MM');
                 }
@@ -53,8 +51,6 @@ class DoctorSchedule extends Component {
 
         }
         return allDays;
-
-
     }
 
     async componentDidMount() {
@@ -72,8 +68,6 @@ class DoctorSchedule extends Component {
             allDays: allDays,
 
         })
-
-
     }
 
     async componentDidUpdate(prevProps, prevState, snapshot) {
@@ -114,7 +108,7 @@ class DoctorSchedule extends Component {
             dataScheduleTimeModal: time
         })
     }
-    closeModalBooking = (time) => {
+    closeModalBooking = () => {
         this.setState({
             isCLoseModalBooking: true
         })

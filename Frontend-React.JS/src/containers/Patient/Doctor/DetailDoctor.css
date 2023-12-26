@@ -7,11 +7,13 @@
 }
 .doctor-detail-container .intro-doctor .content-left {
   width: 20%;
-  background: center center no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  margin: 10px 20px;
+  margin: 10px;
 }
 .doctor-detail-container .intro-doctor .content-right {
   width: 80%;
@@ -26,6 +28,9 @@
 }
 .doctor-detail-container .intro-doctor .content-right .down {
   padding-top: 10px;
+}
+.doctor-detail-container .intro-doctor .content-right .down .like-share-plugin {
+  margin: 10px 0 20px 0;
 }
 .doctor-detail-container .schedule-doctor {
   margin: 0 100px;
@@ -42,20 +47,17 @@
 .doctor-detail-container .detail-infor-doctor {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  padding-top: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  background: #f9f9f9;
-  padding: 10 100px;
+  background-color: #f9f9f9;
+  padding: 10px 100px;
 }
-.doctor-detail-container .detail-infor-doctor h3 {
+.doctor-detail-container .detail-infor-doctor h1, .doctor-detail-container .detail-infor-doctor h2, .doctor-detail-container .detail-infor-doctor h3 {
   font-size: 17px;
 }
 .doctor-detail-container .detail-infor-doctor img {
   width: 100%;
 }
 .doctor-detail-container .comment-doctor {
-  height: 50px;
+  padding: 10px 100px;
 }
 
 /*# sourceMappingURL=DetailDoctor.css.map */

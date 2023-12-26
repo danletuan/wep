@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
 import './DetailSpecialty.scss'
-import HomeHeader from "../HomePage/HomeHeader";
+import HomeHeader from "../../HomePage/HomeHeader";
 import DoctorSchedule from "../Doctor/DoctorSchedule";
 import DoctorExtraInfor from "../Doctor/DoctorExtraInfor";
 import ProfileDoctor from "../Doctor/ProfileDoctor";
-import { getAllSpecialtyById, getAllCodeService } from "../../services/userService";
+import { getAllDetailSpecialtyById, getAllCodeService } from "../../../services/userService";
 import _ from 'lodash'
-import { LANGUAGES } from "../../utils";
+import { LANGUAGES } from "../../../utils";
 
 class DetailSpecialty extends Component {
 
@@ -24,7 +23,7 @@ class DetailSpecialty extends Component {
     async componentDidMount() {
         if (this.props.match && this.props.match.params && this.props.match.params.id) {
             let id = this.props.match.params.id
-            let res = await getAllSpecialtyById({
+            let res = await getAllDetailSpecialtyById({
                 id: id,
                 location: 'ALL'
             })
@@ -73,7 +72,7 @@ class DetailSpecialty extends Component {
             let id = this.props.match.params.id
             let location = event.target.value
 
-            let res = await getAllSpecialtyById({
+            let res = await getAllDetailSpecialtyById({
                 id: id,
                 location: location
             })
@@ -105,7 +104,7 @@ class DetailSpecialty extends Component {
                     <HomeHeader />
                     <div className='detail-specialty-body'>
                         <div className='description-specialty'>
-                            {dataDetailSpecialty && !_.idEmpty(dataDetailSpecialty)
+                            {dataDetailSpecialty && !_.isEmpty(dataDetailSpecialty)
                             &&
                                 <div dangerouslySetInnerHTML={{ __html:dataDetailSpecialty.descriptionHTML}}>
 
@@ -168,7 +167,7 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = () => {
     return {};
 };
 

@@ -6,7 +6,7 @@ import logo from '../../assets/images/logo.svg';
 import {FormattedMessage} from 'react-intl';
 import {LANGUAGES} from '../../utils';
 import {changeLanguageApp} from '../../store/actions';
-import {withRouter} from 'react-router';
+import {withRouter} from 'react-router-dom';
 
 class HomeHeader extends Component {
 

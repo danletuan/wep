@@ -13,11 +13,11 @@ import System from '../routes/System';
 import ConfirmModal from '../components/ConfirmModal';
 import HomePage from './HomePage/HomePage';
 import CustomScrollbars from '../components/CustomScrollbars';
-import DetailDoctor from './Doctor/DetailDoctor';
+import DetailDoctor from './Patient/Doctor/DetailDoctor';
 import VerifyEmail from './Patient/VerifyEmail';
 import Doctor from '../routes/Doctor';
-import DetailSpecialty from "./Specialty/DetailSpecialty";
-import DetailClinic from './Clinic/DetailClinic'
+import DetailSpecialty from "./Patient/Specialty/DetailSpecialty";
+import DetailClinic from './Patient/Clinic/DetailClinic'
 
 class App extends Component {
 
@@ -95,7 +95,7 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = () => {
     return {};
 };
 

@@ -4,8 +4,8 @@ import './ProfileDoctor.scss'
 import {FormattedMessage} from 'react-intl'
 import NumberFormat from 'react-number-format'
 import _ from 'lodash'
-import {getProfileDoctorById} from "../../services/userService";
-import {LANGUAGES} from "../../utils";
+import {getProfileDoctorById} from "../../../services/userService";
+import {LANGUAGES} from "../../../utils";
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 
